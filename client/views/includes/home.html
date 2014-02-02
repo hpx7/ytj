@@ -1,0 +1,15 @@
+<template name="home">
+  <div class="col-md-3">
+    {{> rooms}}
+  </div>
+  <div class="col-md-9">
+    <div class="jumbotron">
+      <h1>Welcome to YouTube Jukebox!</h1>
+      {{#if currentUser}}
+      	<p>Join a room to continue. You will only recieve audio in your own room.</p>
+      {{else}}
+      	<p>Please sign in to continue.</p>
+      {{/if}}
+    </div>
+  </div>
+</template>

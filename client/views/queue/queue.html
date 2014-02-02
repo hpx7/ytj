@@ -1,0 +1,10 @@
+<template name="queue">
+  <div class="well">
+    <label for="queue">Queue:</label>
+    <div id="queue">
+      {{#each songs}}
+        {{> song}}
+      {{/each}}
+    </div>
+  </div>
+</template>

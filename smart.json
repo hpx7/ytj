@@ -1,0 +1,14 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "shark"
+    },
+    "jquery-ui": {},
+    "jquery-ui-bootstrap": {},
+    "user-status": {},
+    "iron-router-progress": {},
+    "fast-render": {}
+  }
+}

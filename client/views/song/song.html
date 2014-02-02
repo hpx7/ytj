@@ -1,0 +1,24 @@
+<template name="song">
+  <div class="row song">
+    <div class="col-xs-6">
+      <div style="position: relative; display: inline-block;">
+        <img src="{{imgUrl}}" class="img-responsive">
+        <span class="duration">{{duration}}</span>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      {{#if removable}}
+        <button type="button" class="close">&times;</button>
+      {{/if}}
+      <span style="font-size: 12px;"><b>{{title}}</b></span>
+      <br>
+      <span style="font-size: 10px;">by {{author}}</span>
+      {{#if addedAt}}
+        <br>
+        <span style="font-size: 10px;">Added By: <i>{{addedBy}}</i></span>
+        <br>
+        <span style="font-size: 10px;">From Room: <i>{{addedFrom}}</i></span>
+      {{/if}}
+    </div>
+  </div>
+</template>

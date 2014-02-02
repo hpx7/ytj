@@ -1,0 +1,12 @@
+<template name="sidebar">
+  <ul class="nav nav-tabs">
+    <li class="{{#unless searchTab}}active{{/unless}}"><a href="#related">Related</a></li>
+    <li class="{{#if searchTab}}active{{/if}}"><a href="#search">Search</a></li>
+  </ul>
+  <br>
+  {{#if searchTab}}
+    {{> search}}
+  {{else}}
+    {{> related}}
+  {{/if}}
+</template>

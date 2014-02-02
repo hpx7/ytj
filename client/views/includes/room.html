@@ -1,0 +1,18 @@
+<template name="room">
+  <div class="col-md-3">
+    {{> rooms}}
+  </div>
+  <div class="col-md-5">
+  	{{> maintab}}
+  </div>
+  <div class="col-md-4">
+  	{{> sidebar}}
+  </div>
+</template>
+
+<template name="maintab">
+    {{#if isHost}}
+      {{> video}}
+    {{/if}}
+    {{> queue}}
+</template>

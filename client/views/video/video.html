@@ -1,0 +1,12 @@
+<template name="video">
+  {{#unless queueEmpty}}
+    <div class="video-container">
+      {{> player}}
+    </div>
+    <button id="skipbutton" class="btn btn-primary btn-sm" style="margin: 10px 0;">Skip</button>
+  {{/unless}}
+</template>
+
+<template name="player">
+	<div id="player"></div>
+</template>

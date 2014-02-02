@@ -1,0 +1,38 @@
+.container-fluid {
+  padding: 0 30px;
+}
+
+.transparent {
+  background: transparent;
+  padding: 0;
+}
+
+.song {
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.duration {
+  padding: 0 4px;
+  font-weight: bold;
+  font-size: 11px;
+  background-color: #000;
+  color: #fff;
+  line-height: 14px;
+  opacity: 0.75;
+  right: 2px;
+  bottom: 2px;
+  position: absolute;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

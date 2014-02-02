@@ -1,0 +1,29 @@
+<template name="rooms">
+  <div class="sidebar-nav well">
+    {{#if _id}}
+      <b>Current Room: </b>{{roomName}}
+      <br>
+      {{#unless ownRoom}}
+        <button class="btn btn-default btn-xs">{{subText}}</button>
+        <br>
+      {{/unless}}
+      <br>
+      <label for="users-list">Users:</label>
+      <ul class="list-unstyled">
+        {{#each users}}
+          <li><i>{{username}}</i></li>
+        {{/each}}
+      </ul>
+      <br>
+    {{/if}}
+    <label for="rooms-list">Rooms:</label>
+    <div id="rooms-list" class="list-group">
+      {{#each rooms}}
+        <a href="{{pathFor 'room'}}" class="list-group-item {{#if currentRoom}}active{{/if}}">
+          {{username}}
+          <span class="badge">{{numUsers}}</span>
+        </a>
+      {{/each}}
+    </div>
+  </div>
+</template>

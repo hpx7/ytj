@@ -1,0 +1,54 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "bootstrap-3": {},
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "shark"
+      },
+      "jquery-ui": {},
+      "jquery-ui-bootstrap": {},
+      "user-status": {},
+      "iron-router-progress": {},
+      "fast-render": {}
+    },
+    "packages": {
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v0.3.7",
+        "commit": "5dd0d142c870647b910be80bc777b96f0dd45e5e"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "shark",
+        "commit": "4f55d0acc293abb4a9492229e8d2be0ec0e176c1"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      },
+      "jquery-ui-bootstrap": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui-bootstrap.git",
+        "tag": "v0.1.2",
+        "commit": "fa742a85639307003e105898e15b631394b63509"
+      },
+      "user-status": {
+        "git": "https://github.com/mizzao/meteor-user-status.git",
+        "tag": "v0.2.0",
+        "commit": "e18cc48440710d0ac23bd1a578974f9142226bf4"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.1.12",
+        "commit": "b190f1592401f4084ce54b8f713b134e35a4e0db"
+      }
+    }
+  }
+}

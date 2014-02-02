@@ -1,0 +1,8 @@
+<template name="related">
+  <label for="related-videos">Related Videos:</label>
+  <div id="related-videos">
+    {{#each relatedVideos}}
+      {{> song}}
+    {{/each}}
+  </div>
+</template>
