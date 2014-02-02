@@ -12,7 +12,10 @@
       "user-status": {},
       "iron-router-progress": {},
       "fast-render": {},
-      "accounts-ui-bootstrap-3": {}
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/hpx7/meteor-accounts-ui-bootstrap-3",
+        "branch": "master"
+      }
     },
     "packages": {
       "bootstrap-3": {
@@ -51,9 +54,9 @@
         "commit": "b190f1592401f4084ce54b8f713b134e35a4e0db"
       },
       "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.2.4",
-        "commit": "cdbd20eb065310c0cc302bbd5f22e5b2121c769a"
+        "git": "https://github.com/hpx7/meteor-accounts-ui-bootstrap-3",
+        "branch": "master",
+        "commit": "e7288b9d1b3035757cabdaae74353ef3809fe501"
       }
     }
   }

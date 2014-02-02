@@ -10,6 +10,8 @@
     "user-status": {},
     "iron-router-progress": {},
     "fast-render": {},
-    "accounts-ui-bootstrap-3": {}
+    "accounts-ui-bootstrap-3": {
+      "git": "https://github.com/hpx7/meteor-accounts-ui-bootstrap-3"
+    }
   }
 }
