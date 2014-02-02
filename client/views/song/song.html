@@ -1,5 +1,5 @@
 <template name="song">
-  <div class="row song">
+  <div class="row song {{#unless addedAt}}pointer{{/unless}}">
     <div class="col-xs-6">
       <div style="position: relative; display: inline-block;">
         <img src="{{imgUrl}}" class="img-responsive">
