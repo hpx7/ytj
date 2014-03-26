@@ -1,23 +1,20 @@
-var player = null, ytReady = false, divRendered = false;
+var player = null;
 
-onYouTubeIframeAPIReady = function () {
-  ytReady = true;
-  initPlayer();
-}
+onYouTubeIframeAPIReady = initPlayer;
 
 function initPlayer () {
-  if (!ytReady || !divRendered || $('iframe#player').length)
-    return;
-  player = new YT.Player('player', {
-    events: {
-      'onStateChange': function (e) {
-        if (e.data === YT.PlayerState.ENDED)
-          songEnd();
+  try {
+    player = new YT.Player('player', {
+      events: {
+        'onStateChange': function (e) {
+          if (e.data === YT.PlayerState.ENDED)
+            songEnd();
+        },
+        'onReady': playSong
       },
-      'onReady': playSong
-    },
-    playerVars: {'rel': 0}
-  });
+      playerVars: {'rel': 0}
+    });
+  } catch (err) {}
 }
 
 function playSong () {
@@ -29,19 +26,11 @@ function playSong () {
 
 Deps.autorun(playSong);
 
-Deps.autorun(function () {
-  var song = Songs.findOne({roomIds: Session.get('roomId')});
-  Session.set('queueEmpty', !song);
-});
-
 Template.video.queueEmpty = function () {
-  return Session.get('queueEmpty');
+  return !Songs.findOne({roomIds: Session.get('roomId')});
 }
 
-Template.player.rendered = function () {
-  divRendered = true;
-  initPlayer();
-}
+Template.player.rendered = initPlayer;
 
 Template.video.events({
   'click #skipbutton': songEnd

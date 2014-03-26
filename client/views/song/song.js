@@ -1,7 +1,3 @@
-Template.song.addedFrom = function () {
-  return Meteor.users.findOne(this.addedFrom).username;
-}
-
 Template.song.addedBy = function () {
   return Meteor.users.findOne(this.addedBy).username;
 }

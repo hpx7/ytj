@@ -1,11 +1,15 @@
 var ytBase = 'http://gdata.youtube.com/feeds/api/videos/';
 var ytParams = {
   v: 2, alt: 'json', 'paid-content': false,
-  fields: 'entry(title,author(name),media:group(yt:videoid,yt:duration,media:thumbnail[@width=320](@url)))'
+  fields: 'entry(title,author(name),yt:statistics(@viewCount),media:group(yt:videoid,yt:duration,media:thumbnail[@width=320](@url)))'
 };
 
-function formattedTime (secs) {
+function formatTime (secs) {
   return new Date(secs*1000).toUTCString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1').replace(/^0*:?0?/,'');
+}
+
+function formatViews (x) {
+  return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 getSongs = function (url, params, callback) {
@@ -15,7 +19,8 @@ getSongs = function (url, params, callback) {
         yt_id: entry.media$group.yt$videoid.$t,
         title: entry.title.$t,
         author: entry.author[0].name.$t,
-        duration: formattedTime(entry.media$group.yt$duration.seconds),
+        duration: formatTime(entry.media$group.yt$duration.seconds),
+        viewCount: formatViews(entry.yt$statistics.viewCount),
         imgUrl: entry.media$group.media$thumbnail[0].url
       };
     }));

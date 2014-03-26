@@ -5,28 +5,22 @@
       "bootstrap-3": {},
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "shark"
+        "branch": "dev"
       },
       "jquery-ui": {},
       "jquery-ui-bootstrap": {},
-      "user-status": {},
-      "iron-router-progress": {},
-      "fast-render": {},
-      "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/hpx7/meteor-accounts-ui-bootstrap-3",
-        "branch": "master"
-      }
+      "user-status": {}
     },
     "packages": {
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v3.1.0-1",
-        "commit": "329dccb08bfc18c635676dea600ac9953162cda9"
+        "tag": "v3.1.1-1",
+        "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "shark",
-        "commit": "4f55d0acc293abb4a9492229e8d2be0ec0e176c1"
+        "branch": "dev",
+        "commit": "3cfa4c618f6d6dffd209b4c0cb0f1d37c5223c09"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
@@ -40,23 +34,18 @@
       },
       "user-status": {
         "git": "https://github.com/mizzao/meteor-user-status.git",
-        "tag": "v0.2.0",
-        "commit": "e18cc48440710d0ac23bd1a578974f9142226bf4"
+        "tag": "v0.3.4",
+        "commit": "741df5e3304807ba42fbe0aca5b8251c5683e1f7"
       },
-      "iron-router-progress": {
-        "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.2.0",
-        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
-      },
-      "fast-render": {
-        "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.12",
-        "commit": "b190f1592401f4084ce54b8f713b134e35a4e0db"
-      },
-      "accounts-ui-bootstrap-3": {
-        "git": "https://github.com/hpx7/meteor-accounts-ui-bootstrap-3",
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
         "branch": "master",
-        "commit": "e7288b9d1b3035757cabdaae74353ef3809fe501"
+        "commit": "2664f817844fba0fab0455a79bc62782c9091ad0"
+      },
+      "timesync": {
+        "git": "https://github.com/mizzao/meteor-timesync.git",
+        "tag": "v0.1.3",
+        "commit": "e8c1a76a6c3c10e3d5ec86e4c0b5ec45b7beb230"
       }
     }
   }

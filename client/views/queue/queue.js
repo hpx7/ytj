@@ -1,3 +1,3 @@
 Template.queue.songs = function () {
-  return Songs.find({roomIds: Session.get('roomId')}, {sort: {addedAt: 1}});
+  return Songs.find({roomIds: this._id}, {sort: {addedAt: 1}});
 }

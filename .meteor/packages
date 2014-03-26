@@ -5,11 +5,9 @@
 
 standard-app-packages
 accounts-password
-iron-router
-iron-router-progress
+accounts-ui
 bootstrap-3
 jquery-ui
 jquery-ui-bootstrap
+iron-router
 user-status
-fast-render
-accounts-ui-bootstrap-3
