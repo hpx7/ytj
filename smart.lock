@@ -3,10 +3,7 @@
   "dependencies": {
     "basePackages": {
       "bootstrap-3": {},
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "dev"
-      },
+      "iron-router": {},
       "jquery-ui": {},
       "jquery-ui-bootstrap": {},
       "user-status": {}
@@ -19,8 +16,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "dev",
-        "commit": "3cfa4c618f6d6dffd209b4c0cb0f1d37c5223c09"
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
@@ -39,8 +36,8 @@
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
-        "branch": "master",
-        "commit": "2664f817844fba0fab0455a79bc62782c9091ad0"
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "timesync": {
         "git": "https://github.com/mizzao/meteor-timesync.git",

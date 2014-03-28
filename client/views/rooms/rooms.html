@@ -14,7 +14,7 @@
       <label for="rooms-list">Rooms:</label>
       <div id="rooms-list" class="list-group">
         {{#each rooms}}
-          <a href="/rooms/{{_id}}" class="list-group-item">
+          <a href="{{pathFor 'room'}}" class="list-group-item">
             {{username}}
             <span class="badge">{{numUsers}}</span>
           </a>
