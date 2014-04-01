@@ -4,6 +4,7 @@
     "iron-router": {},
     "jquery-ui": {},
     "jquery-ui-bootstrap": {},
-    "user-status": {}
+    "user-status": {},
+    "iron-router-progress": {}
   }
 }
