@@ -1,4 +1,4 @@
-var ytBase = 'http://gdata.youtube.com/feeds/api/videos/';
+var ytBase = 'https://gdata.youtube.com/feeds/api/videos/';
 var ytParams = {
   v: 2, alt: 'json', 'paid-content': false,
   fields: 'entry(title,author(name),yt:statistics(@viewCount),media:group(yt:videoid,yt:duration,media:thumbnail[@width=320](@url)))'

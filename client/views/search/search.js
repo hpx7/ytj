@@ -15,7 +15,7 @@ Deps.autorun(function () {
 Template.search.rendered = function () {
   $('#queryinput').autocomplete({
     source: function (request, response) {
-      var url = 'http://clients1.google.com/complete/search?client=youtube&ds=yt&callback=?';
+      var url = 'https://clients1.google.com/complete/search?client=youtube&ds=yt&callback=?';
       $.getJSON(url, {q: request.term}, function (data) {
         response(_.map(data[1], _.first));
       });
