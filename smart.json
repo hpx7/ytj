@@ -5,6 +5,8 @@
     "jquery-ui": {},
     "jquery-ui-bootstrap": {},
     "user-status": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "fast-render": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }
