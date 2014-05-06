@@ -14,10 +14,10 @@
       <br>
       <span style="font-size: 10px;">by {{author}}</span>
       <br>
-      <span style="font-size: 10px;">{{viewCount}} views</span>
       {{#if addedAt}}
-        <br>
         <span style="font-size: 10px;">Added By: <i>{{addedBy}}</i></span>
+      {{else}}
+        <span style="font-size: 10px;">{{viewCount}} views</span>
       {{/if}}
     </div>
   </div>
