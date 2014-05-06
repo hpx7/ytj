@@ -28,8 +28,8 @@ getSongs = function (url, params, callback) {
 }
 
 songEnd = function () {
-  var song = Songs.findOne({roomIds: Session.get('roomId')}, {sort: {addedAt: 1}});
-  if (Songs.find({roomIds: Session.get('roomId')}).count() === 1) {
+  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
+  if (Songs.find({addedFrom: Session.get('roomId')}).count() === 1) {
     var r = 1 + Math.random() * 16 | 0;
     getSongs(song.yt_id + '/related', {'start-index': r, 'max-results': 1}, function (songs) {
       Meteor.call('addSong', songs[0], Session.get('roomId'));

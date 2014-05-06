@@ -3,7 +3,7 @@ Meteor.publish('users', function () {
 });
 
 Meteor.publish('queue', function (roomId) {
-  return Songs.find({roomIds: roomId});
+  return Songs.find({addedFrom: roomId});
 });
 
 UserStatus.events.on('connectionLogout', function (params) {

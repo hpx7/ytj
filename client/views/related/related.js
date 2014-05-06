@@ -3,7 +3,7 @@ Template.related.relatedVideos = function () {
 }
 
 Deps.autorun(function () {
-  var song = Songs.findOne({roomIds: Session.get('roomId')}, {sort: {addedAt: 1}});
+  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
   if (song) {
     getSongs(song.yt_id + '/related', {'max-results': 16}, function (songs) {
       Session.set('relatedVideos', songs);

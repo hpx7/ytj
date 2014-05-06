@@ -18,7 +18,7 @@ function initPlayer () {
 }
 
 function playSong () {
-  var song = Songs.findOne({roomIds: Session.get('roomId')}, {sort: {addedAt: 1}});
+  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
   try {
     song && player.loadVideoById(song.yt_id);
   } catch (err) {}
@@ -27,7 +27,7 @@ function playSong () {
 Deps.autorun(playSong);
 
 Template.video.queueEmpty = function () {
-  return !Songs.findOne({roomIds: Session.get('roomId')});
+  return !Songs.findOne({addedFrom: Session.get('roomId')});
 }
 
 Template.player.rendered = initPlayer;
