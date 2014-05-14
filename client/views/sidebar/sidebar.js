@@ -1,5 +1,5 @@
-Template.sidebar.searchTab = function () {
-  return Session.equals('tabHash', '#search');
+Template.sidebar.tabIs = function (tab, isDefault) {
+  return (isDefault && !Session.get('tabHash')) || Session.equals('tabHash', tab);
 }
 
 Template.sidebar.events({

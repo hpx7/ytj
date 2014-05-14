@@ -1,0 +1,8 @@
+<template name="favorites">
+  <label for="favorite-videos">Favorite Videos:</label>
+  <div id="favorite-videos">
+    {{#each favoriteVideos}}
+      {{> song}}
+    {{/each}}
+  </div>
+</template>

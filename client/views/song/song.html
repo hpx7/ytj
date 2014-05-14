@@ -1,8 +1,15 @@
 <template name="song">
   <div class="row song {{#unless addedAt}}pointer{{/unless}}">
     <div class="col-xs-6">
-      <div style="position: relative; display: inline-block;">
-        <img src="{{imgUrl}}" class="img-responsive">
+      <div style="float: left; position: relative;">
+        {{#if addedAt}}
+          {{#if favorited}}
+            <span class="glyphicon glyphicon-star pointer pull-left"></span>
+          {{else}}
+            <span class="glyphicon glyphicon-star-empty pointer pull-left"></span>
+          {{/if}}
+        {{/if}}
+        <img src="{{imgUrl}}" class="pull-right" style="max-width: 85%;">
         <span class="duration">{{duration}}</span>
       </div>
     </div>
@@ -16,7 +23,8 @@
       <br>
       {{#if addedAt}}
         <span style="font-size: 10px;">Added By: <i>{{addedBy}}</i></span>
-      {{else}}
+      {{/if}}
+      {{#if viewCount}}
         <span style="font-size: 10px;">{{viewCount}} views</span>
       {{/if}}
     </div>
