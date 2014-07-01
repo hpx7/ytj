@@ -12,12 +12,12 @@ Template.song.favorited = function () {
 
 Template.song.events({
   'click .close': function () {
-    Meteor.call('removeSong', this._id, Session.get('roomId'));
+    Meteor.call('removeSong', this._id, Session.get('roomId'), handleError);
   },
   'click .glyphicon-star-empty': function () {
-  	Meteor.call('favorite', this);
+  	Meteor.call('favorite', this, handleError);
   },
   'click .glyphicon-star': function () {
-    Meteor.call('unfavorite', this);
+    Meteor.call('unfavorite', this, handleError);
   }
 });

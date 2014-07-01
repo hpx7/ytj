@@ -5,7 +5,7 @@ Template.sidebar.tabIs = function (tab, isDefault) {
 Template.sidebar.events({
   'click .song': function (e) {
   	$(e.target).closest('.song').fadeOut(100).fadeIn(100);
-    Meteor.call('addSong', this, Session.get('roomId'));
+    Meteor.call('addSong', this, Session.get('roomId'), handleError);
   },
   'click a': function (e) {
   	e.preventDefault();
