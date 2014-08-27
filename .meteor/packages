@@ -5,11 +5,11 @@
 
 standard-app-packages
 accounts-password
-bootstrap-3
-jquery-ui
-jquery-ui-bootstrap
-iron-router
-user-status
-iron-router-progress
-fast-render
-accounts-ui-bootstrap-3
+mrt:jquery-ui@1.9.2
+mrt:jquery-ui-bootstrap@0.1.2
+cmather:iron-router@0.7.1
+mizzao:user-status@0.5.0
+mrt:iron-router-progress@0.4.1
+mrt:accounts-ui-bootstrap-3@0.3.0-1
+mizzao:bootstrap-3
+meteorhacks:fast-render
