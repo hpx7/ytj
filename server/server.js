@@ -1,5 +1,5 @@
 Meteor.publish('users', function () {
-  return Meteor.users.find({}, {fields: {services: 0}});
+  return Meteor.users.find();
 });
 
 Meteor.publish('queue', function (roomId) {

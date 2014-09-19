@@ -1,5 +1,5 @@
 Template.song.addedBy = function () {
-  return Meteor.users.findOne(this.addedBy).username;
+  return Meteor.users.findOne(this.addedBy).profile.name;
 }
 
 Template.song.removable = function () {

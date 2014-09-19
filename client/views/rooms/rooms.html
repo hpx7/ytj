@@ -1,13 +1,13 @@
 <template name="rooms">
   <div class="sidebar-nav well">
     {{#if _id}}
-      <b>Current Room: </b>{{username}}
+      <b>Current Room: </b>{{profile.name}}
       <br>
       <br>
       <label for="users-list">Users:</label>
       <ul class="list-unstyled">
         {{#each users}}
-          <li><i>{{username}}</i></li>
+          <li><i>{{profile.name}}</i></li>
         {{/each}}
       </ul>
     {{else}}
@@ -15,7 +15,7 @@
       <div id="rooms-list" class="list-group">
         {{#each rooms}}
           <a href="{{pathFor 'room'}}" class="list-group-item">
-            {{username}}
+            {{profile.name}}
             <span class="badge">{{numUsers}}</span>
           </a>
         {{/each}}

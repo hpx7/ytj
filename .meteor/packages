@@ -4,7 +4,7 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-accounts-password
+accounts-facebook
 mrt:jquery-ui
 mrt:jquery-ui-bootstrap
 mizzao:user-status
