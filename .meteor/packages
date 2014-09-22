@@ -7,7 +7,6 @@ standard-app-packages
 accounts-facebook
 mrt:jquery-ui
 mrt:jquery-ui-bootstrap
-mizzao:user-status
 mrt:iron-router-progress
 mrt:accounts-ui-bootstrap-3
 mizzao:bootstrap-3
