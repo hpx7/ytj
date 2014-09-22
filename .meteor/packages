@@ -8,7 +8,7 @@ accounts-facebook
 mrt:jquery-ui
 mrt:jquery-ui-bootstrap
 mrt:iron-router-progress
-mrt:accounts-ui-bootstrap-3
-mizzao:bootstrap-3
+ian:accounts-ui-bootstrap-3
+ian:bootstrap-3
 meteorhacks:fast-render
 iron:router
