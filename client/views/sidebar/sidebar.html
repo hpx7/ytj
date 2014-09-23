@@ -1,17 +1,9 @@
 <template name="sidebar">
   <ul class="nav nav-tabs">
-    <li class="{{#if tabIs '#related' true}}active{{/if}}"><a href="#related">Related</a></li>
-    <li class="{{#if tabIs '#search' false}}active{{/if}}"><a href="#search">Search</a></li>
-    <li class="{{#if tabIs '#favorites' false}}active{{/if}}"><a href="#favorites">Favorites</a></li>
+    {{#each tabs}}
+      <li class="{{#if isSelected this}}active{{/if}}"><a href="#{{this}}">{{this}}</a></li>
+    {{/each}}
   </ul>
   <br>
-  {{#if tabIs '#related' true}}
-    {{> related}}
-  {{/if}}
-  {{#if tabIs '#search' false}}
-    {{> search}}
-  {{/if}}
-  {{#if tabIs '#favorites' false}}
-    {{> favorites}}
-  {{/if}}
+  {{> UI.dynamic template=currentTab}}
 </template>
