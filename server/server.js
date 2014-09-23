@@ -3,14 +3,12 @@ Meteor.publish('users', function () {
 });
 
 Meteor.publish('queue', function (roomId) {
-  var userId = this.userId, connectionId = this.connection.id;
-  if (userId) {
-    Meteor.users.update(userId, {$addToSet: {rooms: {room: roomId, session: connectionId}}});
-    this.onStop(function () {
-      Meteor.users.update(userId, {$pull: {rooms: {room: roomId, session: connectionId}}});
-    });
-    return Songs.find({addedFrom: roomId});
-  }
+  var self = this;
+  Meteor.users.update(self.userId, {$addToSet: {rooms: {room: roomId, session: self.connection.id}}});
+  this.onStop(function () {
+    Meteor.users.update(self.userId, {$pull: {rooms: {room: roomId, session: self.connection.id}}});
+  });
+  return Songs.find({addedFrom: roomId});
 });
 
 Meteor.startup(function () {
