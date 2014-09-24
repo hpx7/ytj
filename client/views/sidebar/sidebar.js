@@ -9,12 +9,7 @@ Template.sidebar.currentTab = function () {
 }
 
 Template.sidebar.isSelected = function (tab) {
-  var selectedTab = Session.get('tab') || tabs[0];
-  return tab === selectedTab;
-}
-
-Template.sidebar.tabIs = function (tab, isDefault) {
-  return (isDefault && !Session.get('tab')) || Session.equals('tab', tab);
+  return tab === (Session.get('tab') || tabs[0]);
 }
 
 Template.sidebar.events({
