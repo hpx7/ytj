@@ -1,15 +1,16 @@
+SearchSongs = new Meteor.Collection('search');
+
 Template.search.searchResults = function () {
-  return Session.get('searchResults');
+  return SearchSongs.find();
+}
+
+Template.search.query = function () {
+  return Session.get('searchQuery');
 }
 
 Deps.autorun(function () {
   var query = Session.get('searchQuery');
-  if (query) {
-    getSongs('', {'max-results': 16, q: query}, function (songs) {
-      Session.set('searchResults', songs);
-    });
-  } else
-    Session.set('searchResults', null);
+  if (query) Meteor.subscribe('search', query);
 });
 
 Template.search.rendered = function () {
