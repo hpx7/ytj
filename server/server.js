@@ -1,6 +1,6 @@
 var ytBase = 'https://gdata.youtube.com/feeds/api/videos/';
 var ytParams = {
-  v: 2, alt: 'json', 'paid-content': false,
+  v: 2, alt: 'json', 'paid-content': false, 'max-results': 16,
   fields: 'entry(title,author(name),yt:statistics(@viewCount),media:group(yt:videoid,yt:duration,media:thumbnail[@width=320](@url)))'
 };
 
@@ -12,18 +12,18 @@ function formatViews (x) {
   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function getSongs (url, params, cb) {
+function publishSongs (client, collection, url, params) {
   HTTP.get(ytBase + url, {params: _.extend(params, ytParams)}, function (err, result) {
-    cb(_.map(result.data.feed.entry, function (entry) {
-      return {
+    _.each(result.data.feed.entry, function (entry) {
+      client.added(collection, Random.id(), {
         yt_id: entry.media$group.yt$videoid.$t,
         title: entry.title.$t,
         author: entry.author[0].name.$t,
         duration: formatTime(entry.media$group.yt$duration.seconds),
         viewCount: formatViews(entry.yt$statistics.viewCount),
         imgUrl: entry.media$group.media$thumbnail[0].url
-      };
-    }));
+      });
+    });
   });
 }
 
@@ -41,21 +41,11 @@ Meteor.publish('queue', function (roomId) {
 });
 
 Meteor.publish('related', function (yt_id) {
-  var self = this;
-  getSongs(yt_id + '/related', {'max-results': 16}, function (songs) {
-    _.each(songs, function (song) {
-      self.added('related', Random.id(), song);
-    });
-  });
+  publishSongs(this, 'related', yt_id + '/related', {});
 });
 
 Meteor.publish('search', function (query) {
-  var self = this;
-  getSongs('', {'max-results': 16, q: query}, function (songs) {
-    _.each(songs, function (song) {
-      self.added('search', Random.id(), song);
-    });
-  });
+  publishSongs(this, 'search', '', {q: query});
 });
 
 Meteor.startup(function () {
