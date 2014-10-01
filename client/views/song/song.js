@@ -18,6 +18,6 @@ Template.song.events({
   	Meteor.call('favorite', this, handleError);
   },
   'click .glyphicon-star': function () {
-    Meteor.call('unfavorite', this._id, handleError);
+    Meteor.call('unfavorite', this.yt_id, handleError);
   }
 });
