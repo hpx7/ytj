@@ -9,7 +9,7 @@ function formatTime (secs) {
 }
 
 function formatViews (x) {
-  return x.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return x.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 function publishSongs (client, collection, url, params) {

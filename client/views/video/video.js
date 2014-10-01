@@ -34,7 +34,7 @@ function playSong () {
   } catch (err) {}
 }
 
-Deps.autorun(playSong);
+Tracker.autorun(playSong);
 
 Template.video.queueEmpty = function () {
   return !Songs.findOne({addedFrom: Session.get('roomId')});

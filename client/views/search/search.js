@@ -8,7 +8,7 @@ Template.search.query = function () {
   return Session.get('searchQuery');
 }
 
-Deps.autorun(function () {
+Tracker.autorun(function () {
   var query = Session.get('searchQuery');
   if (query) Meteor.subscribe('search', query);
 });
