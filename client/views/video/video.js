@@ -9,7 +9,7 @@ function songEnd () {
     Meteor.call('addSong', RelatedSongs.find().fetch()[r], Session.get('roomId'));
     Meteor.call('removeSong', song._id, Session.get('roomId'));
   } else
-    song && Meteor.call('removeSong', song._id, Session.get('roomId'));
+    if (song) Meteor.call('removeSong', song._id, Session.get('roomId'));
 }
 
 function initPlayer () {
@@ -30,15 +30,17 @@ function initPlayer () {
 function playSong () {
   var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
   try {
-    song && player.loadVideoById(song.yt_id);
+    if (song) player.loadVideoById(song.yt_id);
   } catch (err) {}
 }
 
 Tracker.autorun(playSong);
 
-Template.video.queueEmpty = function () {
-  return !Songs.findOne({addedFrom: Session.get('roomId')});
-}
+Template.video.helpers({
+  queueEmpty: function () {
+    return !Songs.findOne({addedFrom: Session.get('roomId')});
+  }
+});
 
 Template.player.rendered = initPlayer;
 

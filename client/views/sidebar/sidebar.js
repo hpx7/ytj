@@ -1,16 +1,16 @@
 var tabs = ['Related', 'Search', 'Favorites'];
 
-Template.sidebar.tabs = function () {
-  return tabs;
-}
-
-Template.sidebar.currentTab = function () {
-  return (Session.get('tab') || tabs[0]).toLowerCase();
-}
-
-Template.sidebar.isSelected = function (tab) {
-  return tab === (Session.get('tab') || tabs[0]);
-}
+Template.sidebar.helpers({
+  tabs: function () {
+    return tabs;
+  },
+  currentTab: function () {
+    return (Session.get('tab') || tabs[0]).toLowerCase();
+  },
+  isSelected: function (tab) {
+    return tab === (Session.get('tab') || tabs[0]);
+  }
+});
 
 Template.sidebar.events({
   'click .song': function (e) {

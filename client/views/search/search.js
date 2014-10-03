@@ -1,12 +1,13 @@
 SearchSongs = new Meteor.Collection('search');
 
-Template.search.searchResults = function () {
-  return SearchSongs.find();
-}
-
-Template.search.query = function () {
-  return Session.get('searchQuery');
-}
+Template.search.helpers({
+  searchResults: function () {
+    return SearchSongs.find();
+  },
+  query: function () {
+    return Session.get('searchQuery');
+  }
+});
 
 Tracker.autorun(function () {
   var query = Session.get('searchQuery');
@@ -24,12 +25,15 @@ Template.search.rendered = function () {
   }).on('autocompleteselect', function (event, ui) {
     Session.set('searchQuery', ui.item.value);
   });
-}
+};
 
 Template.search.events({
   'submit form': function (e) {
     e.preventDefault();
     var query = $('#queryinput').val();
-    query && $('#queryinput').blur() && Session.set('searchQuery', query);
+    if (query) {
+      $('#queryinput').blur();
+      Session.set('searchQuery', query);
+    }
   }
 });
