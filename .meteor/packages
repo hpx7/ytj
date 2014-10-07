@@ -5,12 +5,11 @@
 
 standard-app-packages
 accounts-facebook
+http
+iron:router
+meteorhacks:fast-render
+ian:accounts-ui-bootstrap-3
+ian:bootstrap-3
 mrt:jquery-ui
 mrt:jquery-ui-bootstrap
 mrt:iron-router-progress
-ian:accounts-ui-bootstrap-3
-ian:bootstrap-3
-meteorhacks:fast-render
-iron:router
-http
-
