@@ -31,7 +31,7 @@ Meteor.publish('global', function () {
   return [Meteor.users.find(), Favorites.find({favoritedBy: this.userId})];
 });
 
-Meteor.publish('queue', function (roomId) {
+Meteor.publish('room', function (roomId) {
   var self = this;
   Meteor.users.update(self.userId, {$addToSet: {rooms: {room: roomId, session: self.connection.id}}});
   this.onStop(function () {
