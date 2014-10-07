@@ -2,11 +2,6 @@
   padding: 0 30px;
 }
 
-.transparent {
-  background: transparent;
-  padding: 0;
-}
-
 .pointer {
   cursor: pointer;
 }
@@ -14,6 +9,14 @@
 .song {
   padding: 10px 0;
   border-top: 1px solid #ddd;
+}
+
+.text-medium {
+  font-size: 12px;
+}
+
+.text-small {
+  font-size: 10px;
 }
 
 .duration {
