@@ -1,5 +1,5 @@
 Template.favorites.helpers({
   favoriteVideos: function () {
-    return Meteor.user() && Meteor.user().favorites;
+    return Favorites.find({favoritedBy: Meteor.userId()});
   }
 });

@@ -27,8 +27,8 @@ function publishSongs (client, collection, url, params) {
   });
 }
 
-Meteor.publish('users', function () {
-  return Meteor.users.find();
+Meteor.publish('global', function () {
+  return [Meteor.users.find(), Favorites.find({favoritedBy: this.userId})];
 });
 
 Meteor.publish('queue', function (roomId) {
