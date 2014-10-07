@@ -2,12 +2,10 @@
   <div class="row song {{#unless addedAt}}pointer{{/unless}}">
     <div class="col-xs-6">
       <div style="float: left; position: relative;">
-        {{#if addedAt}}
-          {{#if favorited}}
-            <span class="glyphicon glyphicon-star pointer pull-left"></span>
-          {{else}}
-            <span class="glyphicon glyphicon-star-empty pointer pull-left"></span>
-          {{/if}}
+        {{#if favorited}}
+          <span class="glyphicon glyphicon-star pointer pull-left"></span>
+        {{else}}
+          <span class="glyphicon glyphicon-star-empty pointer pull-left"></span>
         {{/if}}
         <img src="{{imgUrl}}" class="pull-right" style="max-width: 85%;">
         <span class="duration">{{duration}}</span>
@@ -21,11 +19,10 @@
       <br>
       <span style="font-size: 10px;">by {{author}}</span>
       <br>
+      <span style="font-size: 10px;">{{viewCount}} views</span>
       {{#if addedAt}}
+        <br>
         <span style="font-size: 10px;">Added By: <i>{{addedBy}}</i></span>
-      {{/if}}
-      {{#if viewCount}}
-        <span style="font-size: 10px;">{{viewCount}} views</span>
       {{/if}}
     </div>
   </div>

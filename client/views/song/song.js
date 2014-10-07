@@ -16,8 +16,10 @@ Template.song.events({
   },
   'click .glyphicon-star-empty': function (e) {
   	Meteor.call('favorite', this, handleError);
+    return false;
   },
   'click .glyphicon-star': function (e) {
     Meteor.call('unfavorite', this.yt_id, handleError);
+    return false;
   }
 });

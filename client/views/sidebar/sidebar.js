@@ -18,8 +18,8 @@ Template.sidebar.events({
     Meteor.call('addSong', this, Session.get('roomId'), handleError);
   },
   'click a': function (e) {
-    e.preventDefault();
     Session.set('tab', e.target.text);
     IronLocation.pushState(null, 'YouTube Jukebox', e.target.href, true);
+    return false;
   }
 });
