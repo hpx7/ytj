@@ -3,7 +3,7 @@ var player;
 onYouTubeIframeAPIReady = initPlayer;
 
 function songEnd () {
-  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
+  var song = Songs.findOne({}, {sort: {addedAt: 1}});
   if (Songs.find({addedFrom: Session.get('roomId')}).count() === 1) {
     var r = Math.random() * 16 | 0;
     Meteor.call('addSong', RelatedSongs.find().fetch()[r], Session.get('roomId'));
@@ -24,7 +24,7 @@ function initPlayer () {
 }
 
 function playSong () {
-  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
+  var song = Songs.findOne({}, {sort: {addedAt: 1}});
   try {
     if (song && player) player.loadVideoById(song.yt_id);
   } catch (err) {}
@@ -34,7 +34,7 @@ Tracker.autorun(playSong);
 
 Template.video.helpers({
   queueEmpty: function () {
-    return !Songs.findOne({addedFrom: Session.get('roomId')});
+    return !Songs.findOne();
   }
 });
 

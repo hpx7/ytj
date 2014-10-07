@@ -6,7 +6,7 @@ Template.song.helpers({
     return this.addedBy && Session.equals('roomId', Meteor.userId()) || this.addedBy === Meteor.userId();
   },
   favorited: function () {
-    return Favorites.findOne({favoritedBy: Meteor.userId(), yt_id: this.yt_id});
+    return Favorites.findOne({yt_id: this.yt_id});
   }
 });
 

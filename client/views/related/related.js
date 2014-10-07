@@ -7,6 +7,6 @@ Template.related.helpers({
 });
 
 Tracker.autorun(function () {
-  var song = Songs.findOne({addedFrom: Session.get('roomId')}, {sort: {addedAt: 1}});
+  var song = Songs.findOne({}, {sort: {addedAt: 1}});
   if (song) Meteor.subscribe('related', song.yt_id);
 });
