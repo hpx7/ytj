@@ -1,6 +1,4 @@
-var player;
-
-onYouTubeIframeAPIReady = initPlayer;
+var songTracker = null;
 
 function songEnd () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}});
@@ -12,25 +10,21 @@ function songEnd () {
 }
 
 function initPlayer () {
-  player = typeof YT !== 'undefined' && new YT.Player('player', {
+  player = new YT.Player('player', {
     events: {
       'onStateChange': function (e) {
         if (e.data === YT.PlayerState.ENDED) songEnd();
       },
-      'onReady': playSong
+      'onReady': function () {
+        songTracker = Tracker.autorun(function () {
+          var song = Songs.findOne({}, {sort: {addedAt: 1}});
+          if (song) player.loadVideoById(song.yt_id);
+        });
+      }
     },
     playerVars: {'rel': 0}
   });
 }
-
-function playSong () {
-  var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  try {
-    if (song && player) player.loadVideoById(song.yt_id);
-  } catch (err) {}
-}
-
-Tracker.autorun(playSong);
 
 Template.video.helpers({
   queueEmpty: function () {
@@ -38,12 +32,19 @@ Template.video.helpers({
   }
 });
 
-Template.player.rendered = initPlayer;
+Template.video.rendered = function () {
+  if (typeof YT !== 'undefined') initPlayer();
+};
+
+Template.video.destroyed = function () {
+  if (songTracker) songTracker.stop();
+};
 
 Template.video.events({
   'click #skipbutton': songEnd
 });
 
 Meteor.startup(function() {
+  onYouTubeIframeAPIReady = initPlayer;
   $.getScript('//www.youtube.com/iframe_api');
 });
