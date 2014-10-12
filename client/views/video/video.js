@@ -1,4 +1,12 @@
-var songTracker = null;
+var yt = new YTPlayer('player', Template.video, {rel: 0});
+
+Tracker.autorun(function () {
+  if (yt.ready()) {
+    yt.player.addEventListener('onStateChange', function (e) {
+      if (e.data === YT.PlayerState.ENDED) songEnd();
+    });
+  }
+});
 
 function songEnd () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}});
@@ -9,22 +17,10 @@ function songEnd () {
   }
 }
 
-function initPlayer () {
-  player = new YT.Player('player', {
-    events: {
-      'onStateChange': function (e) {
-        if (e.data === YT.PlayerState.ENDED) songEnd();
-      },
-      'onReady': function () {
-        songTracker = Tracker.autorun(function () {
-          var song = Songs.findOne({}, {sort: {addedAt: 1}});
-          if (song) player.loadVideoById(song.yt_id);
-        });
-      }
-    },
-    playerVars: {'rel': 0}
-  });
-}
+Tracker.autorun(function () {
+  var song = Songs.findOne({}, {sort: {addedAt: 1}});
+  if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
+});
 
 Template.video.helpers({
   queueEmpty: function () {
@@ -32,19 +28,6 @@ Template.video.helpers({
   }
 });
 
-Template.video.rendered = function () {
-  if (typeof YT !== 'undefined') initPlayer();
-};
-
-Template.video.destroyed = function () {
-  if (songTracker) songTracker.stop();
-};
-
 Template.video.events({
   'click #skipbutton': songEnd
-});
-
-Meteor.startup(function() {
-  onYouTubeIframeAPIReady = initPlayer;
-  $.getScript('//www.youtube.com/iframe_api');
 });
