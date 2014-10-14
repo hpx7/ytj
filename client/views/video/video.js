@@ -1,4 +1,4 @@
-var yt = new YTPlayer('player', Template.video, {rel: 0});
+var yt = new YTPlayer('player', Template.player, {rel: 0});
 
 Tracker.autorun(function () {
   if (yt.ready()) {

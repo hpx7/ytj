@@ -1,8 +1,12 @@
 <template name="video">
   {{#unless queueEmpty}}
-    <div class="video-container">
-      <div id="player"></div>
-    </div>
+    {{> player }}
     <button id="skipbutton" class="btn btn-primary btn-sm vspace">Skip</button>
   {{/unless}}
+</template>
+
+<template name="player">
+  <div class="video-container">
+    <div id="player"></div>
+  </div>
 </template>
