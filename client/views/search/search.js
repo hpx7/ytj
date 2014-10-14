@@ -1,4 +1,4 @@
-SearchSongs = new Meteor.Collection('search');
+SearchSongs = new Mongo.Collection('search');
 
 Template.search.helpers({
   searchResults: function () {

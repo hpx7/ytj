@@ -1,4 +1,4 @@
-RelatedSongs = new Meteor.Collection('related');
+RelatedSongs = new Mongo.Collection('related');
 
 Template.related.helpers({
   relatedSongs: function () {
