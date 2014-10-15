@@ -12,7 +12,7 @@ function formatViews (x) {
   return x.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-getYTInfo = function (url, params) {
+function getYTInfo (url, params) {
   var result = HTTP.get(ytBase + url, {params: _.extend(params, ytParams)});
   return _.map(result.data.feed.entry, function (entry) {
     return {

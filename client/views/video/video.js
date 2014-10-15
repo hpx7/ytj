@@ -1,4 +1,4 @@
-var yt = new YTPlayer('player', Template.player, {rel: 0});
+var yt = new YTPlayer('player', Template.video, {rel: 0});
 
 Tracker.autorun(function () {
   if (yt.ready()) {
@@ -16,12 +16,6 @@ function songEnd () {
 Tracker.autorun(function () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}});
   if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
-});
-
-Template.video.helpers({
-  queueEmpty: function () {
-    return !Songs.findOne();
-  }
 });
 
 Template.video.events({
