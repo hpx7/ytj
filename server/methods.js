@@ -53,9 +53,9 @@ Meteor.methods({
     var song = Songs.findOne(songId);
     if (!song || (roomId !== this.userId && song.addedBy !== this.userId))
       throw new Meteor.Error(403, 'Not allowed to remove this song');
-    if (Songs.find().count() === 1)
-      Meteor.call('addSong', song.related[Math.random() * 16 | 0], roomId);
     Songs.remove(songId);
+    if (!Songs.find({addedFrom: roomId}).count())
+      Meteor.call('addSong', song.related[Math.random() * 16 | 0], roomId);
   },
   favorite: function (song) {
     checkLoggedIn(this.userId);
