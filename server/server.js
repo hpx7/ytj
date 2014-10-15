@@ -11,13 +11,6 @@ Meteor.publish('room', function (roomId) {
   return Songs.find({addedFrom: roomId});
 });
 
-Meteor.publish('search', function (query) {
-  var self = this;
-  _.each(getSearchResults(query), function (result) {
-    self.added('search', Random.id(), result);
-  });
-});
-
 Meteor.startup(function () {
   Meteor.users.update({}, {$set: {rooms: []}}, {multi: true});
 });

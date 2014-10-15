@@ -1,8 +1,6 @@
-SearchSongs = new Mongo.Collection('search');
-
 Template.search.helpers({
   searchResults: function () {
-    return SearchSongs.find();
+    return Session.get('searchResults');
   },
   query: function () {
     return Session.get('searchQuery');
@@ -10,8 +8,9 @@ Template.search.helpers({
 });
 
 Tracker.autorun(function () {
-  var query = Session.get('searchQuery');
-  if (query) Meteor.subscribe('search', query);
+  Meteor.call('searchResults', Session.get('searchQuery'), function (error, results) {
+    Session.set('searchResults', results);
+  });
 });
 
 Template.search.rendered = function () {
