@@ -1,12 +1,6 @@
-RelatedSongs = new Mongo.Collection('related');
-
 Template.related.helpers({
   relatedSongs: function () {
-    return RelatedSongs.find();
+    var song = Songs.findOne({}, {sort: {addedAt: 1}});
+    return song && song.related;
   }
-});
-
-Tracker.autorun(function () {
-  var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  if (song) Meteor.subscribe('related', song.yt_id);
 });

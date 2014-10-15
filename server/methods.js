@@ -1,6 +1,3 @@
-Songs = new Mongo.Collection('songs');
-Favorites = new Mongo.Collection('favorites');
-
 function checkLoggedIn (userId) {
   if (!userId)
     throw new Meteor.Error(401, 'User not logged in');
@@ -17,6 +14,7 @@ Meteor.methods({
   addSong: function (song, roomId) {
     checkLoggedIn(this.userId);
     Songs.insert(_.extend(sanitizeSong(song), {
+      related: getRelated(song.yt_id),
       addedBy: this.userId,
       addedFrom: roomId,
       addedAt: new Date()
@@ -25,8 +23,10 @@ Meteor.methods({
   removeSong: function (songId, roomId) {
     checkLoggedIn(this.userId);
     var song = Songs.findOne(songId);
-    if (song && roomId !== this.userId && song.addedBy !== this.userId)
+    if (!song || (roomId !== this.userId && song.addedBy !== this.userId))
       throw new Meteor.Error(403, 'Not allowed to remove this song');
+    if (Songs.find().count() === 1)
+      Meteor.call('addSong', song.related[Math.random() * 16 | 0], roomId);
     Songs.remove(songId);
   },
   favorite: function (song) {
