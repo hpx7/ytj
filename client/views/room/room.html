@@ -3,16 +3,12 @@
     {{> rooms}}
   </div>
   <div class="col-md-5">
-  	{{> maintab}}
+  	{{#if isHost}}
+      {{> video}}
+    {{/if}}
+    {{> queue}}
   </div>
   <div class="col-md-4">
   	{{> sidebar}}
   </div>
-</template>
-
-<template name="maintab">
-    {{#if isHost}}
-      {{> video}}
-    {{/if}}
-    {{> queue}}
 </template>
