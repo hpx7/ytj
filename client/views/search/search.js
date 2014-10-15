@@ -32,7 +32,7 @@ Template.search.events({
     var query = $('#queryinput').val();
     if (query) {
       $('#queryinput').blur();
-      Session.set('searchQuery', query);
+      Router.go('room', {_id: Session.get('roomId')}, {query: 'q=' + query, hash: 'Search'});
     }
   }
 });
