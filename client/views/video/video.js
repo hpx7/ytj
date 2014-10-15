@@ -10,7 +10,7 @@ Tracker.autorun(function () {
 
 function songEnd () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  Meteor.call('removeSong', song._id, Session.get('roomId'));
+  Meteor.call('removeSong', song._id, Session.get('roomId'), handleError);
 }
 
 Tracker.autorun(function () {
