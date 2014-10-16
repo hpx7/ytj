@@ -21,18 +21,13 @@ Template.search.rendered = function () {
         response(_.map(data[1], _.first));
       });
     }
-  }).on('autocompleteselect', function (event, ui) {
-    Session.set('searchQuery', ui.item.value);
   });
 };
 
 Template.search.events({
   'submit form': function (e) {
-    e.preventDefault();
-    var query = $('#queryinput').val();
-    if (query) {
-      $('#queryinput').blur();
-      Router.go('room', {_id: Session.get('roomId')}, {query: 'q=' + query, hash: 'Search'});
-    }
+    $('#queryinput').blur();
+    Router.go('room', {_id: Session.get('roomId')}, {query: 'q=' + $('#queryinput').val(), hash: 'Search'});
+    return false;
   }
 });
