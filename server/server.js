@@ -1,5 +1,9 @@
-Meteor.publish('global', function () {
-  return [Meteor.users.find(), Favorites.find({favoritedBy: this.userId})];
+Meteor.publish('users', function () {
+  return Meteor.users.find();
+});
+
+Meteor.publish('favorites', function () {
+  return Favorites.find({favoritedBy: this.userId});
 });
 
 Meteor.publish('room', function (roomId) {
