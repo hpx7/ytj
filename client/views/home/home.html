@@ -1,6 +1,16 @@
 <template name="home">
   <div class="col-md-3">
-    {{> rooms}}
+    <div class="sidebar-nav well">
+      <label for="rooms-list">Rooms:</label>
+      <div id="rooms-list" class="list-group">
+        {{#each rooms}}
+          <a href="{{pathFor 'room'}}" class="list-group-item">
+            {{profile.name}}
+            <span class="badge">{{numUsers}}</span>
+          </a>
+        {{/each}}
+      </div>
+    </div>
   </div>
   <div class="col-md-9">
     <div class="jumbotron">

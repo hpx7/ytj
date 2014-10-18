@@ -1,6 +1,16 @@
 <template name="room">
   <div class="col-md-3">
-    {{> rooms}}
+    <div class="sidebar-nav well">
+      <b>Current Room: </b>{{profile.name}}
+      <br>
+      <br>
+      <label for="users-list">Users:</label>
+      <ul class="list-unstyled">
+        {{#each users}}
+          <li><i>{{profile.name}}</i></li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
   <div class="col-md-5">
   	{{#if isHost}}
