@@ -11,8 +11,8 @@ function songEnd () {
   if (song) {
     Meteor.call('removeSong', song._id, Session.get('roomId'), handleError);
     if (!Songs.find().count()) {
-      Meteor.call('next', song.yt_id, function (error, data) {
-        Meteor.call('addSong', data, Session.get('roomId'), handleError);
+      getYTInfo(song.yt_id + '/related', {}, function (data) {
+        Meteor.call('addSong', data[Math.random() * data.length | 0], Session.get('roomId'), handleError);
       });
     }
   }

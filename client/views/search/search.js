@@ -8,7 +8,7 @@ Template.search.helpers({
 });
 
 Tracker.autorun(function () {
-  Meteor.call('searchResults', Session.get('searchQuery'), function (error, data) {
+  Session.get('searchQuery') && getYTInfo('', {q: Session.get('searchQuery')}, function (data) {
     Session.set('searchResults', data);
   });
 });

@@ -6,7 +6,7 @@ Template.related.helpers({
 
 Tracker.autorun(function () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  song && Meteor.call('related', song.yt_id, function (error, data) {
+  song && getYTInfo(song.yt_id + '/related', {}, function (data) {
     Session.set('related', data);
   });
 });
