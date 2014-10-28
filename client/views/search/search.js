@@ -8,8 +8,8 @@ Template.search.helpers({
 });
 
 Tracker.autorun(function () {
-  Meteor.call('searchResults', Session.get('searchQuery'), function (error, results) {
-    Session.set('searchResults', results);
+  Meteor.call('searchResults', Session.get('searchQuery'), function (error, data) {
+    Session.set('searchResults', data);
   });
 });
 
