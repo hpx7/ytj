@@ -8,9 +8,9 @@ Template.search.helpers({
 });
 
 Tracker.autorun(function () {
-  Session.get('searchQuery') && getYTInfo('', {q: Session.get('searchQuery')}, function (data) {
+  Session.get('searchQuery') ? getYTInfo('', {q: Session.get('searchQuery')}, function (data) {
     Session.set('searchResults', data);
-  });
+  }) : Session.set('searchResults', null);
 });
 
 Template.search.rendered = function () {
