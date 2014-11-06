@@ -3,7 +3,7 @@ Template.song.helpers({
     return Meteor.users.findOne(this.addedBy).profile.name;
   },
   removable: function () {
-    return this.addedBy && Session.equals('roomId', Meteor.userId()) || this.addedBy === Meteor.userId();
+    return this.addedBy && (Router.current().params._id === Meteor.userId() || this.addedBy === Meteor.userId());
   },
   favorited: function () {
     return Favorites.findOne({yt_id: this.yt_id});
@@ -12,7 +12,7 @@ Template.song.helpers({
 
 Template.song.events({
   'click .close': function (e) {
-    Meteor.call('removeSong', this._id, Session.get('roomId'), handleError);
+    Meteor.call('removeSong', this._id, Router.current().params._id, handleError);
   },
   'click .glyphicon-star-empty': function (e) {
   	Meteor.call('favorite', this, handleError);

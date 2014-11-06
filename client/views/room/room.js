@@ -1,8 +1,11 @@
 Template.room.helpers({
+  roomOwner: function () {
+    return Meteor.users.findOne(Router.current().params._id).profile.name;
+  },
   users: function () {
-    return Meteor.users.find({'rooms.room': Session.get('roomId')});
+    return Meteor.users.find({'rooms.room': Router.current().params._id});
   },
   isHost: function () {
-    return Session.equals('roomId', Meteor.userId());
+    return Router.current().params._id === Meteor.userId();
   }
 });

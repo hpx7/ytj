@@ -9,8 +9,7 @@ http
 iron:router
 meteorhacks:fast-render
 ian:accounts-ui-bootstrap-3
-ian:bootstrap-3
+mizzao:bootstrap-3
 mrt:jquery-ui
 mrt:jquery-ui-bootstrap
-mrt:iron-router-progress
 hpx7:youtube-iframe-player

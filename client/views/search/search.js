@@ -3,12 +3,13 @@ Template.search.helpers({
     return Session.get('searchResults');
   },
   query: function () {
-    return Session.get('searchQuery');
+    return Router.current().params.query.q;
   }
 });
 
 Tracker.autorun(function () {
-  Session.get('searchQuery') ? getYTInfo('', {q: Session.get('searchQuery')}, function (data) {
+  var route = Router.current();
+  route && route.params.query.q ? getYTInfo('', {q: route.params.query.q}, function (data) {
     Session.set('searchResults', data);
   }) : Session.set('searchResults', null);
 });
@@ -27,7 +28,7 @@ Template.search.rendered = function () {
 Template.search.events({
   'submit form': function (e) {
     $('#queryinput').blur();
-    Router.go('room', {_id: Session.get('roomId')}, {query: 'q=' + $('#queryinput').val(), hash: 'Search'});
+    Router.go('room', {_id: Router.current().params._id}, {query: {q: $('#queryinput').val()}, hash: 'Search'});
     return false;
   }
 });
