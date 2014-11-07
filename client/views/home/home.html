@@ -6,7 +6,7 @@
         {{#each rooms}}
           <a href="{{pathFor route='room'}}" class="list-group-item">
             {{ownerName}}
-            <span class="badge">{{listeners.length}}</span>
+            <span class="badge">{{numListeners}}</span>
           </a>
         {{/each}}
       </div>

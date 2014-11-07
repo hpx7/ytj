@@ -1,22 +1,22 @@
-Meteor.publish('rooms', function () {
-  return Rooms.find();
+Meteor.publish('rooms', function (roomId) {
+  return roomId ? Rooms.find(roomId) : Rooms.find();
 });
 
-Meteor.publish('favorites', function () {
-  return Favorites.find({favoriterId: this.userId});
+Meteor.publish('listeners', function (roomId) {
+  var userName = Meteor.users.findOne(this.userId).name;
+  var listenerId = Listeners.insert({userId: this.userId, name: userName, roomId: roomId, sessionId: this.connection.id});
+  this.onStop(function () {
+    Listeners.remove(listenerId);
+  });
+  return roomId ? Listeners.find({roomId: roomId}) : Listeners.find();
 });
 
 Meteor.publish('queue', function (roomId) {
   return Songs.find({addedFrom: roomId});
 });
 
-Meteor.publish('room', function (roomId) {
-  var listener = {userId: this.userId, name: Meteor.users.findOne(this.userId).name, sessionId: this.connection.id};
-  Rooms.update(roomId, {$addToSet: {listeners: listener}});
-  this.onStop(function () {
-    Rooms.update(roomId, {$pull: {listeners: listener}});
-  });
-  return Rooms.find(roomId);
+Meteor.publish('favorites', function () {
+  return Favorites.find({favoriterId: this.userId});
 });
 
 Accounts.onCreateUser(function (options, user) {
@@ -25,5 +25,5 @@ Accounts.onCreateUser(function (options, user) {
 });
 
 Meteor.startup(function () {
-  Rooms.update({}, {$set: {listeners: []}}, {multi: true});
+  Listeners.remove({});
 });
