@@ -1,13 +1,13 @@
 <template name="room">
   <div class="col-md-3">
     <div class="sidebar-nav well">
-      <b>Current Room: </b>{{roomOwner}}
+      <b>Current Room: </b>{{ownerName}}
       <br>
       <br>
-      <label for="users-list">Users:</label>
+      <label for="users-list">Listeners:</label>
       <ul class="list-unstyled">
-        {{#each users}}
-          <li><i>{{profile.name}}</i></li>
+        {{#each listeners}}
+          <li><i>{{name}}</i></li>
         {{/each}}
       </ul>
     </div>

@@ -5,8 +5,8 @@
       <div id="rooms-list" class="list-group">
         {{#each rooms}}
           <a href="{{pathFor route='room'}}" class="list-group-item">
-            {{profile.name}}
-            <span class="badge">{{numUsers}}</span>
+            {{ownerName}}
+            <span class="badge">{{listeners.length}}</span>
           </a>
         {{/each}}
       </div>

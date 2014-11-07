@@ -1,9 +1,6 @@
 Template.song.helpers({
-  addedBy: function () {
-    return Meteor.users.findOne(this.addedBy).profile.name;
-  },
   removable: function () {
-    return this.addedBy && (Router.current().params._id === Meteor.userId() || this.addedBy === Meteor.userId());
+    return this.adderId && _.contains([Rooms.findOne().ownerId, this.adderId], Meteor.userId());
   },
   favorited: function () {
     return Favorites.findOne({yt_id: this.yt_id});
