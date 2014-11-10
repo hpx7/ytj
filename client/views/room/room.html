@@ -5,11 +5,15 @@
       <br>
       <br>
       <label for="users-list">Listeners:</label>
-      <ul class="list-unstyled">
-        {{#each listeners}}
-          <li><i>{{name}}</i></li>
-        {{/each}}
-      </ul>
+      {{#if handleReady 'listenersHandle'}}
+        <ul class="list-unstyled">
+          {{#each listeners}}
+            <li><i>{{name}}</i></li>
+          {{/each}}
+        </ul>
+      {{else}}
+        Loading...
+      {{/if}}
     </div>
   </div>
   <div class="col-md-5">

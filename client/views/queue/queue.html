@@ -2,9 +2,13 @@
   <div class="well">
     <label for="queue">Queue:</label>
     <div id="queue">
-      {{#each songs}}
-        {{> song}}
-      {{/each}}
+      {{#if handleReady 'queueHandle'}}
+        {{#each songs}}
+          {{> song}}
+        {{/each}}
+      {{else}}
+        Loading...
+      {{/if}}
     </div>
   </div>
 </template>

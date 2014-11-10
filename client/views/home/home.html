@@ -2,14 +2,20 @@
   <div class="col-md-3">
     <div class="sidebar-nav well">
       <label for="rooms-list">Rooms:</label>
-      <div id="rooms-list" class="list-group">
-        {{#each rooms}}
-          <a href="{{pathFor route='room'}}" class="list-group-item">
-            {{ownerName}}
-            <span class="badge">{{numListeners}}</span>
-          </a>
-        {{/each}}
-      </div>
+      {{#if handleReady 'roomsHandle'}}
+        <div id="rooms-list" class="list-group">
+          {{#each rooms}}
+            <a href="{{pathFor route='room'}}" class="list-group-item">
+              {{ownerName}}
+              {{#if handleReady 'listenersHandle'}}
+                <span class="badge">{{numListeners}}</span>
+              {{/if}}
+            </a>
+          {{/each}}
+        </div>
+      {{else}}
+        Loading...
+      {{/if}}
     </div>
   </div>
   <div class="col-md-9">
