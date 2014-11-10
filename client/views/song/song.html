@@ -18,8 +18,10 @@
       <span class="text-medium"><b>{{title}}</b></span>
       <br>
       <span class="text-small">by {{author}}</span>
-      <br>
-      <span class="text-small">{{viewCount}} views</span>
+      {{#if viewCount}}
+        <br>
+        <span class="text-small">{{viewCount}} views</span>
+      {{/if}}
       {{#if addedAt}}
         <br>
         <span class="text-small">Added By: <i>{{adderName}}</i></span>
