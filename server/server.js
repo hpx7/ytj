@@ -1,3 +1,7 @@
+Meteor.publish(null, function () {
+  return Meteor.users.find(this.userId, {fields: {name: 1}});
+});
+
 Meteor.publish('rooms', function (roomId) {
   return roomId ? Rooms.find(roomId) : Rooms.find();
 });
