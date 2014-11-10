@@ -8,6 +8,10 @@ Template.song.helpers({
 });
 
 Template.song.events({
+  'click .song.pointer': function (e) {
+    $(e.target).closest('.song').fadeOut(100).fadeIn(100);
+    Meteor.call('addSong', this, Router.current().params._id, handleError);
+  },
   'click .close': function (e) {
     Meteor.call('removeSong', this._id, Router.current().params._id, handleError);
   },

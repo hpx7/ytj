@@ -11,10 +11,3 @@ Template.sidebar.helpers({
     return tab === (Router.current().getParams().hash || tabs[0]);
   }
 });
-
-Template.sidebar.events({
-  'click .song': function (e) {
-  	$(e.target).closest('.song').fadeOut(100).fadeIn(100);
-    Meteor.call('addSong', this, Router.current().params._id, handleError);
-  }
-});
