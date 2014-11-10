@@ -3,7 +3,7 @@ Meteor.publish('rooms', function (roomId) {
 });
 
 Meteor.publish('listeners', function (roomId) {
-  var userName = Meteor.users.findOne(this.userId).name;
+  var userName = this.userId && Meteor.users.findOne(this.userId).name;
   var listenerId = Listeners.insert({userId: this.userId, name: userName, roomId: roomId, sessionId: this.connection.id});
   this.onStop(function () {
     Listeners.remove(listenerId);
@@ -12,7 +12,7 @@ Meteor.publish('listeners', function (roomId) {
 });
 
 Meteor.publish('queue', function (roomId) {
-  return Songs.find({addedFrom: roomId});
+  return Songs.find({addedTo: roomId});
 });
 
 Meteor.publish('favorites', function () {
@@ -20,7 +20,7 @@ Meteor.publish('favorites', function () {
 });
 
 Accounts.onCreateUser(function (options, user) {
-  Rooms.insert({ownerId: user._id, ownerName: options.profile.name, listeners: []});
+  Rooms.insert({ownerId: user._id, ownerName: options.profile.name});
   return _.extend(user, {name: options.profile.name});
 });
 

@@ -32,9 +32,9 @@ iron:controller@1.0.0
 iron:core@1.0.0
 iron:dynamic-template@1.0.0
 iron:layout@1.0.0
-iron:location@1.0.0
+iron:location@1.0.1
 iron:middleware-stack@1.0.0
-iron:router@1.0.0
+iron:router@1.0.1
 iron:url@1.0.0
 jquery@1.0.1
 json@1.0.1
@@ -67,7 +67,6 @@ service-configuration@1.0.2
 session@1.0.4
 spacebars-compiler@1.0.3
 spacebars@1.0.3
-standard-app-packages@1.0.3
 stylus@1.0.5
 templating@1.0.9
 tracker@1.0.3

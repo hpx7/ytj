@@ -8,8 +8,8 @@ Template.search.helpers({
 });
 
 Tracker.autorun(function () {
-  var route = Router.current();
-  route && route.params.query.q ? getYTInfo('', {q: route.params.query.q}, function (data) {
+  var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
+  query ? getYTInfo('', {q: query}, function (data) {
     Session.set('searchResults', data);
   }) : Session.set('searchResults', null);
 });

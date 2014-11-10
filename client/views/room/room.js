@@ -1,6 +1,6 @@
 Template.room.helpers({
   listeners: function () {
-    return Listeners.find({roomId: this._id});
+    return Listeners.find({roomId: this._id, userId: {$ne: null}});
   },
   isHost: function () {
     return this.ownerId === Meteor.userId();
