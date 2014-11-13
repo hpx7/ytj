@@ -1,33 +1,51 @@
 <template name="home">
-  <div class="col-md-3">
-    <div class="sidebar-nav well">
-      <label for="rooms-list">Rooms:</label>
-      {{#if handleReady 'roomsHandle'}}
-        <div id="rooms-list" class="list-group">
-          {{#each rooms}}
-            <a href="{{pathFor route='room'}}" class="list-group-item">
-              {{ownerName}}
-              {{#if handleReady 'listenersHandle'}}
-                <span class="badge">{{numListeners}}</span>
-              {{/if}}
-            </a>
-          {{/each}}
-        </div>
-      {{else}}
-        Loading...
-      {{/if}}
-    </div>
-  </div>
-  <div class="col-md-9">
+  <div class="{{#if currentUser}}col-md-9{{else}}col-md-12{{/if}}">
     <div class="jumbotron">
       <center>
         <h1>Welcome to YouTube Jukebox!</h1>
         {{#if currentUser}}
-        	<p>Join a room to continue. You will only recieve audio in your own room.</p>
+        	<p>Join a room to continue. You will only recieve audio in your
+            <a href="{{pathFor route='room' data=myRoom}}">own room.</a>
+          </p>
         {{else}}
         	<p>Please sign in to continue.</p>
         {{/if}}
       </center>
     </div>
   </div>
+  {{#if currentUser}}
+    <div class="col-md-3">
+      <div class="sidebar-nav well">
+        <label for="my-room">Your Room:</label>
+        <div id="my-room">
+          {{#with myRoom}}
+            <a href="{{pathFor route='room'}}" class="list-group-item">
+              {{ownerName}}
+              {{#if handleReady 'listenersHandle'}}
+                <span class="badge">{{numListeners}}</span>
+              {{/if}}
+            </a>
+          {{/with}}
+        </div>
+        <br>
+        <label for="friends-rooms">Your Friend's Rooms:</label>
+        {{#if handleReady 'roomsHandle'}}
+          <div id="friends-rooms" class="list-group">
+            {{#each rooms}}
+              <a href="{{pathFor route='room'}}" class="list-group-item">
+                {{ownerName}}
+                {{#if handleReady 'listenersHandle'}}
+                  <span class="badge">{{numListeners}}</span>
+                {{/if}}
+              </a>
+            {{else}}
+              No rooms to display
+            {{/each}}
+          </div>
+        {{else}}
+          Loading...
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
 </template>

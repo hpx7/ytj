@@ -1,9 +1,10 @@
 Meteor.publish(null, function () {
-  return Meteor.users.find(this.userId, {fields: {name: 1}});
+  return [Meteor.users.find(this.userId, {fields: {name: 1}}), Rooms.find({ownerId: this.userId})];
 });
 
 Meteor.publish('rooms', function (roomId) {
-  return roomId ? Rooms.find(roomId) : Rooms.find();
+  var friendIds = this.userId ? getFriendIds(this.userId) : [];
+  return roomId ? Rooms.find({_id: roomId, ownerFbId: {$in: friendIds}}) : Rooms.find({ownerFbId: {$in: friendIds}});
 });
 
 Meteor.publish('listeners', function (roomId) {
@@ -24,7 +25,7 @@ Meteor.publish('favorites', function () {
 });
 
 Accounts.onCreateUser(function (options, user) {
-  Rooms.insert({ownerId: user._id, ownerName: options.profile.name});
+  Rooms.insert({ownerId: user._id, ownerName: options.profile.name, ownerFbId: user.services.facebook.id});
   return _.extend(user, {name: options.profile.name});
 });
 
