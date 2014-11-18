@@ -1,13 +1,15 @@
 <template name="song">
   <div class="row song {{#unless addedAt}}pointer{{/unless}}">
-    <div class="col-xs-6">
-      <div style="float: left; position: relative;">
-        {{#if favorited}}
-          <span class="glyphicon glyphicon-star pointer pull-left"></span>
-        {{else}}
-          <span class="glyphicon glyphicon-star-empty pointer pull-left"></span>
-        {{/if}}
-        <img src="{{imgUrl}}" class="pull-right" style="max-width: 85%;">
+    <div class="col-xs-1">
+      {{#if favorited}}
+        <span class="glyphicon glyphicon-star pointer"></span>
+      {{else}}
+        <span class="glyphicon glyphicon-star-empty pointer"></span>
+      {{/if}}
+    </div>
+    <div class="col-xs-5">
+      <div class="thumbnail-container">
+        <img src="{{imgUrl}}" class="img-responsive">
         <span class="duration">{{duration}}</span>
       </div>
     </div>
