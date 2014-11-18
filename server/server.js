@@ -1,3 +1,8 @@
+roomVisible = function (userId, roomId) {
+  var room = Rooms.findOne(roomId);
+  return room && (room.ownerId === userId || friends(userId, room.ownerFbId));
+}
+
 Meteor.publish(null, function () {
   return [Meteor.users.find(this.userId, {fields: {name: 1}}), Rooms.find({ownerId: this.userId})];
 });
@@ -8,6 +13,8 @@ Meteor.publish('rooms', function (roomId) {
 });
 
 Meteor.publish('listeners', function (roomId) {
+  if (!roomVisible(this.userId, roomId))
+    return [];
   var userName = this.userId && Meteor.users.findOne(this.userId).name;
   var listenerId = Listeners.insert({userId: this.userId, name: userName, roomId: roomId, sessionId: this.connection.id});
   this.onStop(function () {
@@ -17,7 +24,7 @@ Meteor.publish('listeners', function (roomId) {
 });
 
 Meteor.publish('queue', function (roomId) {
-  return Songs.find({addedTo: roomId});
+  return roomVisible(this.userId, roomId) ? Songs.find({addedTo: roomId}) : [];
 });
 
 Meteor.publish('favorites', function () {
