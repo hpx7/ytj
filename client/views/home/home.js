@@ -1,7 +1,4 @@
 Template.home.helpers({
-  myRoom: function () {
-    return Rooms.findOne({ownerId: Meteor.userId()});
-  },
   rooms: function () {
     return Rooms.find({ownerId: {$ne: Meteor.userId()}}, {sort: {ownerName: 1}});
   },

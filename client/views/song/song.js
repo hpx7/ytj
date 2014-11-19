@@ -1,6 +1,7 @@
 Template.song.helpers({
   removable: function () {
-    return this.adderId && _.contains([Rooms.findOne(Router.current().params._id).ownerId, this.adderId], Meteor.userId());
+    var room = Rooms.findOne(Router.current().params._id);
+    return room && this.adderId && _.contains([room.ownerId, this.adderId], Meteor.userId());
   },
   favorited: function () {
     return Favorites.findOne({yt_id: this.yt_id});
