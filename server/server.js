@@ -6,8 +6,8 @@ Meteor.publish('friendsRooms', function () {
   return Rooms.find({ownerFbId: {$in: friendIds(this.userId)}});
 });
 
-Meteor.publish('friendsListeners', function () {
-  return Listeners.find({fbId: {$in: friendIds(this.userId)}});
+Meteor.publish('friendsRoomsListeners', function () {
+  return Listeners.find({roomFbId: {$in: friendIds(this.userId)}});
 });
 
 Meteor.publish('room', function (roomId) {
@@ -19,9 +19,8 @@ Meteor.publish('queue', function (roomId) {
 });
 
 Meteor.publish('roomListeners', function (roomId) {
-  var user = Meteor.users.findOne(this.userId);
-  var listener = {userId: this.userId, name: user.name, fbId: user.services.facebook.id, roomId: roomId};
-  var listenerId = Listeners.insert(listener);
+  var user = Meteor.users.findOne(this.userId), room = Rooms.findOne(roomId);
+  var listenerId = Listeners.insert({userId: this.userId, name: user.name, roomFbId: room.ownerFbId, roomId: roomId});
   this.onStop(function () {
     Listeners.remove(listenerId);
   });
