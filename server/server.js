@@ -20,6 +20,7 @@ Meteor.publish('queue', function (roomId) {
 
 Meteor.publish('roomListeners', function (roomId) {
   var user = Meteor.users.findOne(this.userId), room = Rooms.findOne(roomId);
+  if (!user || !room) return [];
   var listenerId = Listeners.insert({userId: this.userId, name: user.name, roomFbId: room.ownerFbId, roomId: roomId});
   this.onStop(function () {
     Listeners.remove(listenerId);
