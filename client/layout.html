@@ -13,14 +13,16 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            {{#with myRoom}}
+            {{#if currentUser}}
               <li class="{{#if atRoute 'home'}}active{{/if}}">
                 <a href="{{pathFor route='home'}}">Home</a>
               </li>
-              <li class="{{#if inMyRoom}}active{{/if}}">
-                <a href="{{pathFor route='room'}}">My Room</a>
-              </li>
-            {{/with}}
+              {{#with myRoom}}
+                <li class="{{#if inMyRoom}}active{{/if}}">
+                  <a href="{{pathFor route='room'}}">My Room</a>
+                </li>
+              {{/with}}
+            {{/if}}
             {{> loginButtons}}
           </ul>
         </div>

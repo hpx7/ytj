@@ -1,13 +1,15 @@
 <template name="song">
   <div class="row song {{#unless addedAt}}pointer{{/unless}}">
-    <div class="col-xs-1">
-      {{#if favorited}}
-        <span class="glyphicon glyphicon-star pointer"></span>
-      {{else}}
-        <span class="glyphicon glyphicon-star-empty pointer"></span>
-      {{/if}}
-    </div>
-    <div class="col-xs-5">
+    {{#if currentUser}}
+      <div class="col-xs-1">
+        {{#if favorited}}
+          <span class="glyphicon glyphicon-star pointer"></span>
+        {{else}}
+          <span class="glyphicon glyphicon-star-empty pointer"></span>
+        {{/if}}
+      </div>
+    {{/if}}
+    <div class="{{#if currentUser}}col-xs-5{{else}}col-xs-6{{/if}}">
       <div class="thumbnail-container">
         <img src="{{imgUrl}}" class="img-responsive">
         <span class="duration">{{duration}}</span>
@@ -24,7 +26,7 @@
         <br>
         <span class="text-small">{{viewCount}} views</span>
       {{/if}}
-      {{#if addedAt}}
+      {{#if adderName}}
         <br>
         <span class="text-small">Added By: <i>{{adderName}}</i></span>
       {{/if}}
