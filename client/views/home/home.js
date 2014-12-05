@@ -1,8 +1,8 @@
 Template.home.helpers({
   rooms: function () {
-    return Rooms.find({ownerId: {$ne: Meteor.userId()}}, {sort: {ownerName: 1}});
+    return Rooms.find({'owner._id': {$ne: Meteor.userId()}}, {sort: {'owner.name': 1}});
   },
   numListeners: function () {
-    return Listeners.find({roomId: this._id, userId: {$ne: null}}).count();
+    return Listeners.find({'room._id': this._id, user: {$ne: null}}).count();
   }
 });

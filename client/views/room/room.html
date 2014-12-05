@@ -1,14 +1,14 @@
 <template name="room">
   <div class="col-md-3">
     <div class="sidebar-nav well">
-      <b>Current Room: </b>{{ownerName}}
+      <b>Current Room: </b>{{owner.username}}
       <br>
       <br>
       <label for="users-list">Listeners:</label>
       {{#if handleReady 'listenersHandle'}}
         <ul class="list-unstyled">
           {{#each listeners}}
-            <li><i>{{name}}</i></li>
+            <li><i>{{user.username}}</i></li>
           {{/each}}
         </ul>
       {{else}}

@@ -20,7 +20,7 @@
         <div id="my-room">
           {{#with myRoom}}
             <a href="{{pathFor route='room'}}" class="list-group-item">
-              {{ownerName}}
+              {{owner.username}}
               {{#if handleReady 'listenersHandle'}}
                 <span class="badge">{{numListeners}}</span>
               {{/if}}
@@ -34,7 +34,7 @@
             {{#if handleReady 'roomsHandle'}}
               {{#each rooms}}
                 <a href="{{pathFor route='room'}}" class="list-group-item">
-                  {{ownerName}}
+                  {{owner.username}}
                   {{#if handleReady 'listenersHandle'}}
                     <span class="badge">{{numListeners}}</span>
                   {{/if}}

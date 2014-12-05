@@ -11,12 +11,11 @@ Template.registerHelper('handleReady', function (handleName) {
 });
 
 Template.registerHelper('myRoom', function () {
-  return Rooms.findOne({ownerId: Meteor.userId()});
+  return Rooms.findOne({'owner._id': Meteor.userId()});
 });
 
 Template.registerHelper('inMyRoom', function () {
-  var room = Rooms.findOne(Router.current().params._id);
-  return room && room.ownerId === Meteor.userId();
+  return Rooms.findOne({_id: Router.current().params._id, 'owner._id': Meteor.userId()});
 });
 
 Accounts.ui.config({
