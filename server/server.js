@@ -32,8 +32,10 @@ Meteor.publish('favorites', function () {
 });
 
 Accounts.onCreateUser(function (options, user) {
-  Rooms.insert({ownerId: user._id, ownerName: options.profile.name, ownerFbId: user.services.facebook.id});
-  return _.extend(user, {name: options.profile.name});
+  user.name = user.username || options.profile.name;
+  var fbId = user.services.facebook && user.services.facebook.id
+  Rooms.insert({ownerId: user._id, ownerName: user.name, ownerFbId: fbId});
+  return user;
 });
 
 Meteor.startup(function () {

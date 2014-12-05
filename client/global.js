@@ -18,3 +18,8 @@ Template.registerHelper('inMyRoom', function () {
   var room = Rooms.findOne(Router.current().params._id);
   return room && room.ownerId === Meteor.userId();
 });
+
+Accounts.ui.config({
+  requestPermissions: {facebook: ['user_friends']},
+  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+});

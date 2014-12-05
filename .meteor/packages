@@ -6,6 +6,7 @@
 meteor-platform
 force-ssl
 accounts-facebook
+accounts-password
 http
 iron:router
 meteorhacks:fast-render
