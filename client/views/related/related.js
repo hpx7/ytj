@@ -1,12 +1,6 @@
 Template.related.helpers({
   relatedSongs: function () {
-    return Session.get('related');
+    var song = Songs.findOne({}, {sort: {addedAt: 1}});
+    return song && song.related;
   }
-});
-
-Tracker.autorun(function () {
-  var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  song ? getYTInfo(song.yt_id + '/related', {}, function (data) {
-    Session.set('related', data);
-  }) : Session.set('related', null);
 });

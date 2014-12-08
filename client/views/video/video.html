@@ -1,6 +1,18 @@
 <template name="video">
-  <div class="video-container">
-    <div id="player"></div>
-  </div>
-  <button id="skipbutton" class="btn btn-primary btn-sm vspace" {{disabled}}>Skip</button>
+  {{#if handleReady 'queueHandle'}}
+    {{#if numSongs}}
+      <div class="video-container">
+        {{> player}}
+      </div>
+      <button id="skipbutton" class="btn btn-primary btn-sm vspace" {{disabled}}>Skip</button>
+    {{else}}
+      <p>Add songs to start listening!</p>
+    {{/if}}
+  {{else}}
+    <p>Loading...</p>
+  {{/if}}
+</template>
+
+<template name="player">
+  <div id="player"></div>
 </template>

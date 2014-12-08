@@ -1,8 +1,16 @@
 <template name="related">
   <label for="related-videos">Related Songs:</label>
   <div id="related-videos">
-    {{#each relatedSongs}}
-      {{> song}}
-    {{/each}}
+    {{#if handleReady 'queueHandle'}}
+      {{#if numSongs}}
+        {{#each relatedSongs}}
+          {{> song}}
+        {{else}}
+          <p>Loading...</p>
+        {{/each}}
+      {{/if}}
+    {{else}}
+      <p>Loading...</p>
+    {{/if}}
   </div>
 </template>

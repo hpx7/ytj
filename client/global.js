@@ -10,6 +10,10 @@ Template.registerHelper('handleReady', function (handleName) {
   return Router.current()[handleName] && Router.current()[handleName].ready();
 });
 
+Template.registerHelper('numSongs', function () {
+  return Songs.find().count()
+});
+
 Template.registerHelper('myRoom', function () {
   return Rooms.findOne({'owner._id': Meteor.userId()});
 });

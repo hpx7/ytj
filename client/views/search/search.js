@@ -9,7 +9,7 @@ Template.search.helpers({
 
 Tracker.autorun(function () {
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
-  query ? getYTInfo('', {q: query}, function (data) {
+  query ? getYTInfo('', {q: query, 'paid-content': false, 'max-results': 16}, function (error, data) {
     Session.set('searchResults', data);
   }) : Session.set('searchResults', null);
 });
