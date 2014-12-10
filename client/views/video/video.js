@@ -1,5 +1,4 @@
 var yt = new YTPlayer('player', Template.player, {rel: 0, playsinline: 1});
-var currentSongId = null;
 
 Tracker.autorun(function () {
   yt.ready() && yt.player.addEventListener('onStateChange', function (e) {
@@ -12,11 +11,8 @@ function songEnd () {
 }
 
 Tracker.autorun(function () {
-  var song = Songs.findOne({}, {sort: {addedAt: 1}});
-  if (song && yt.ready() && currentSongId !== song._id) {
-    currentSongId = song._id;
-    yt.player.loadVideoById(song.yt_id);
-  }
+  var song = Songs.findOne({}, {sort: {addedAt: 1}, fields: {yt_id: 1}});
+  if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
 });
 
 Template.video.helpers({

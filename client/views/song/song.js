@@ -14,7 +14,8 @@ Template.song.events({
     Meteor.call('addSong', this, Router.current().params._id, handleError);
   },
   'click .close': function (e) {
-    Meteor.call('removeSong', this._id, Router.current().params._id, handleError);
+    if (Songs.find({_id: {$ne: this._id}}).count() || this.related)
+      Meteor.call('removeSong', this._id, Router.current().params._id, handleError);
   },
   'click .glyphicon-star-empty': function (e) {
   	Meteor.call('favorite', this, handleError);
