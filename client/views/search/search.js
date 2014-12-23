@@ -17,8 +17,8 @@ Tracker.autorun(function () {
 Template.search.rendered = function () {
   $('#queryinput').autocomplete({
     source: function (request, response) {
-      var url = 'https://clients1.google.com/complete/search?client=youtube&ds=yt&callback=?';
-      $.getJSON(url, {q: request.term}, function (data) {
+      var url = 'https://suggestqueries.google.com/complete/search?callback=?';
+      $.getJSON(url, {client: 'youtube', ds: 'yt', q: request.term}, function (data) {
         response(_.map(data[1], _.first));
       });
     }
