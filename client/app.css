@@ -55,3 +55,7 @@
   width: 100%;
   height: 100%;
 }
+
+.ui-autocomplete {
+  z-index: 10000;
+}
