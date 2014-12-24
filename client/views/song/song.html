@@ -1,7 +1,7 @@
 <template name="song">
   <div class="row song {{#unless addedAt}}pointer{{/unless}}">
     {{#if currentUser}}
-      <div class="col-xs-1">
+      <div class="col-xs-1 narrow">
         {{#if favorited}}
           <span class="glyphicon glyphicon-star pointer"></span>
         {{else}}
@@ -9,13 +9,13 @@
         {{/if}}
       </div>
     {{/if}}
-    <div class="{{#if currentUser}}col-xs-5{{else}}col-xs-6{{/if}}">
+    <div class="{{#if currentUser}}col-xs-4{{else}}col-xs-5{{/if}}">
       <div class="thumbnail-container">
         <img src="{{imgUrl}}" class="img-responsive">
         <span class="duration">{{duration}}</span>
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-7">
       {{#if removable}}
         <button type="button" class="close">&times;</button>
       {{/if}}

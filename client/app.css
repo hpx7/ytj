@@ -11,6 +11,10 @@
   border-top: 1px solid #ddd;
 }
 
+.narrow {
+  padding-right: 5px;
+}
+
 .vspace {
   margin: 10px 0;
 }
