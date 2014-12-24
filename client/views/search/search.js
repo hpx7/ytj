@@ -15,7 +15,7 @@ Tracker.autorun(function () {
 });
 
 Template.search.rendered = function () {
-  $('#queryinput').autocomplete({
+  $('.queryinput').autocomplete({
     source: function (request, response) {
       var url = 'https://suggestqueries.google.com/complete/search?callback=?';
       $.getJSON(url, {client: 'youtube', ds: 'yt', q: request.term}, function (data) {
@@ -27,8 +27,9 @@ Template.search.rendered = function () {
 
 Template.search.events({
   'submit form': function (e) {
-    $('#queryinput').blur();
-    Router.go('room', {_id: Router.current().params._id}, {query: {q: $('#queryinput').val()}, hash: 'Search'});
+    $('.queryinput').blur();
+    var query = $(e.target).find('.queryinput').val();
+    Router.go('room', {_id: Router.current().params._id}, {query: {q: query}, hash: 'Search'});
     return false;
   }
 });
