@@ -38,4 +38,7 @@ Accounts.onCreateUser(function (options, user) {
 
 Meteor.startup(function () {
   Listeners.remove({});
+  ServiceConfiguration.configurations.upsert({service: 'facebook'}, {
+    service: 'facebook', loginStyle: 'redirect', appId: Meteor.settings.fbAppId, secret: Meteor.settings.fbSecret
+  });
 });
