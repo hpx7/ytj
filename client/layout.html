@@ -1,31 +1,29 @@
 <template name="layout">
   <div class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container-fluid">
-      <div class="row">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">YouTube Jukebox</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            {{#if currentUser}}
-              <li class="{{#if atRoute 'home'}}active{{/if}}">
-                <a href="{{pathFor route='home'}}">Home</a>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">YouTube Jukebox</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          {{#if currentUser}}
+            <li class="{{#if atRoute 'home'}}active{{/if}}">
+              <a href="{{pathFor route='home'}}">Home</a>
+            </li>
+            {{#with myRoom}}
+              <li class="{{#if inMyRoom}}active{{/if}}">
+                <a href="{{pathFor route='room'}}">My Room</a>
               </li>
-              {{#with myRoom}}
-                <li class="{{#if inMyRoom}}active{{/if}}">
-                  <a href="{{pathFor route='room'}}">My Room</a>
-                </li>
-              {{/with}}
-            {{/if}}
-            {{> loginButtons}}
-          </ul>
-        </div>
+            {{/with}}
+          {{/if}}
+          {{> loginButtons}}
+        </ul>
       </div>
     </div>
   </div>
