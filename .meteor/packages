@@ -7,12 +7,12 @@ meteor-platform
 force-ssl
 accounts-facebook
 accounts-password
+service-configuration
 http
 iron:router
 meteorhacks:fast-render
 ian:accounts-ui-bootstrap-3
-mizzao:bootstrap-3
+twbs:bootstrap
 mizzao:jquery-ui
 hpx7:youtube-iframe-player
 sacha:spin
-service-configuration

@@ -9,7 +9,7 @@ Template.search.helpers({
 
 Tracker.autorun(function () {
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
-  query ? ytAPI({q: query}, function (error, data) {
+  query ? searchYT({q: query}, function (error, data) {
     Session.set('searchResults', data);
   }) : Session.set('searchResults', null);
 });
