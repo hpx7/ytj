@@ -12,13 +12,17 @@ function songEnd () {
 
 Tracker.autorun(function () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}, fields: {yt_id: 1}});
-  if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
+  if (song && yt.ready()) {
+    yt.player.loadVideoById(song.yt_id);
+    searchYT({relatedToVideoId: song.yt_id}, function (error, related) {
+      Meteor.call('updateRelated', song._id, related, handleError);
+    });
+  }
 });
 
 Template.video.helpers({
   disabled: function () {
-    var song = Songs.findOne({}, {sort: {addedAt: 1}});
-    return song && song.related ? '' : 'disabled';
+    return Songs.find().count() > 1 || Songs.findOne().related ? '' : 'disabled';
   }
 });
 

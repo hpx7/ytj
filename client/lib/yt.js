@@ -10,8 +10,7 @@ function formatViews (x) {
 }
 
 searchYT = function (params, cb) {
-  var ytBase = 'https://www.googleapis.com/youtube/v3/';
-  var key = Meteor.isServer ? Meteor.settings.server_yt_key : Meteor.settings.public.client_yt_key;
+  var ytBase = 'https://www.googleapis.com/youtube/v3/', key = Meteor.settings.public.ytKey;
   params = _.extend({part: 'id', maxResults: 16, type: 'video', videoEmbeddable: true, key: key}, params);
   HTTP.get(ytBase + 'search', {params: params}, function (error, result) {
     var ids = _.pluck(_.pluck(result.data.items, 'id'), 'videoId');
