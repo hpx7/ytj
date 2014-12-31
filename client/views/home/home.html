@@ -32,7 +32,7 @@
         <div id="friends-rooms" class="list-group">
           {{#if currentUser.services.facebook}}
             {{#if handleReady 'roomsHandle'}}
-              {{#each rooms}}
+              {{#each friendsRooms}}
                 <a href="{{pathFor route='room'}}" class="list-group-item">
                   {{owner.username}}
                   {{#if handleReady 'listenersHandle'}}
