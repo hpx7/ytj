@@ -1,6 +1,5 @@
 Template.related.helpers({
   relatedSongs: function () {
-    var song = Songs.findOne({}, {sort: {addedAt: 1}});
-    return song && song.related;
+    return Songs.findOne() && Songs.findOne({}, {sort: {addedAt: 1}}).related;
   }
 });
