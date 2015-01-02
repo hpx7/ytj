@@ -21,9 +21,7 @@
           {{#with myRoom}}
             <a href="{{pathFor route='room'}}" class="list-group-item">
               {{owner.username}}
-              {{#if handleReady 'listenersHandle'}}
-                <span class="badge">{{numListeners}}</span>
-              {{/if}}
+              <span class="badge">{{listeners.length}}</span>
             </a>
           {{/with}}
         </div>
@@ -31,13 +29,11 @@
         <label for="friends-rooms">Your Friend's Rooms:</label>
         <div id="friends-rooms" class="list-group">
           {{#if currentUser.services.facebook}}
-            {{#if handleReady 'roomsHandle'}}
+            {{#if handleReady 'friendsRoomsHandle'}}
               {{#each friendsRooms}}
                 <a href="{{pathFor route='room'}}" class="list-group-item">
                   {{owner.username}}
-                  {{#if handleReady 'listenersHandle'}}
-                    <span class="badge">{{numListeners}}</span>
-                  {{/if}}
+                  <span class="badge">{{listeners.length}}</span>
                 </a>
               {{else}}
                 No rooms to display

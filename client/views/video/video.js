@@ -1,7 +1,7 @@
 var yt = new YTPlayer('player', Template.player, {rel: 0, playsinline: 1});
 
 Tracker.autorun(function () {
-  yt.ready() && yt.player.addEventListener('onStateChange', function (e) {
+  if (yt.ready()) yt.player.addEventListener('onStateChange', function (e) {
     if (e.data === YT.PlayerState.ENDED) songEnd();
   });
 });
