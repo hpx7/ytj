@@ -5,6 +5,15 @@ Template.song.helpers({
   },
   favorited: function () {
     return Favorites.findOne({yt_id: this.yt_id});
+  },
+  duration: function () {
+    var h = parseInt(this.duration.match(/\d+(?=H)/)) || 0;
+    var m = parseInt(this.duration.match(/\d+(?=M)/)) || 0;
+    var s = parseInt(this.duration.match(/\d+(?=S)/)) || 0;
+    return new Date((h*3600+m*60+s)*1000).toUTCString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1').replace(/^0*:?0?/, '');
+  },
+  viewCount: function () {
+    return this.viewCount && this.viewCount.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 });
 

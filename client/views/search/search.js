@@ -2,7 +2,7 @@ var search = MeteorSearch();
 
 RegisterAsyncHelper({template: Template.search, helperName: 'searchResults', global: true}, function (cb) {
   if (search.getSearchQuery()) {
-    searchYT({q: search.getSearchQuery()}, function (err, data) {
+    SearchYT({q: search.getSearchQuery(), maxResults: 16}, YTMapping, function (err, data) {
       cb(data);
     });
   } else
