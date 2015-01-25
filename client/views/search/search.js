@@ -1,17 +1,12 @@
-Template.search.helpers({
-  searchResults: function () {
-    return Session.get('searchResults');
-  },
-  query: function () {
-    return Router.current().params.query.q;
-  }
-});
+var search = MeteorSearch();
 
-Tracker.autorun(function () {
-  var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
-  query ? searchYT({q: query}, function (error, data) {
-    Session.set('searchResults', data);
-  }) : Session.set('searchResults', null);
+RegisterAsyncHelper({template: Template.search, helperName: 'searchResults', global: true}, function (cb) {
+  if (search.getSearchQuery()) {
+    searchYT({q: search.getSearchQuery()}, function (err, data) {
+      cb(data);
+    });
+  } else
+    cb([]);
 });
 
 Template.search.rendered = function () {
@@ -24,12 +19,3 @@ Template.search.rendered = function () {
     }
   });
 };
-
-Template.search.events({
-  'submit form': function (e) {
-    $('.queryinput').blur();
-    var query = $(e.target).find('.queryinput').val();
-    Router.go('room', {_id: Router.current().params._id}, {query: {q: query}, hash: 'Search'});
-    return false;
-  }
-});
