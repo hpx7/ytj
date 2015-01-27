@@ -1,4 +1,4 @@
-var yt = new YTPlayer('player', Template.player, {rel: 0, playsinline: 1});
+var yt = new YTPlayer({rel: 0, playsinline: 1});
 
 Tracker.autorun(function () {
   if (yt.ready()) yt.player.addEventListener('onStateChange', function (e) {

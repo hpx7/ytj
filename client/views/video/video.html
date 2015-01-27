@@ -2,7 +2,7 @@
   {{#if handleReady 'queueHandle'}}
     {{#if numSongs}}
       <div class="video-container">
-        {{> player}}
+        {{> YTPlayer}}
       </div>
       <button id="skipbutton" class="btn btn-primary btn-block vspace" {{disabled}}>Skip</button>
     {{else}}
@@ -11,8 +11,4 @@
   {{else}}
     <p>Loading...</p>
   {{/if}}
-</template>
-
-<template name="player">
-  <div id="player"></div>
 </template>
