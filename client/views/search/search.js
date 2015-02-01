@@ -1,6 +1,6 @@
 var search = MeteorSearch();
 
-RegisterAsyncHelper({template: Template.search, helperName: 'searchResults', global: true}, function (cb) {
+RegisterAsyncHelper({template: Template.search, helperName: 'searchResults', shared: true}, function (cb) {
   if (search.getSearchQuery()) {
     SearchYT({q: search.getSearchQuery(), maxResults: 16}, YTMapping, function (err, data) {
       cb(data);
