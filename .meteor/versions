@@ -25,7 +25,7 @@ geojson-utils@1.0.2
 handlebars@1.0.2
 hpx7:async-template-helpers@0.3.4
 hpx7:iron-router-search@0.2.0
-hpx7:youtube-iframe-player@0.4.5
+hpx7:youtube-iframe-player@0.4.7
 hpx7:youtube-search@0.0.1
 html-tools@1.0.3
 htmljs@1.0.3
