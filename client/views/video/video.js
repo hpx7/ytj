@@ -12,12 +12,7 @@ function songEnd () {
 
 Tracker.autorun(function () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}, fields: {yt_id: 1}});
-  if (song && yt.ready()) {
-    yt.player.loadVideoById(song.yt_id);
-    SearchYT({relatedToVideoId: song.yt_id, maxResults: 16}, YTMapping, function (error, related) {
-      if (Songs.findOne(song._id)) Meteor.call('updateRelated', song._id, related, handleError);
-    });
-  }
+  if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
 });
 
 Template.video.helpers({
