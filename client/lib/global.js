@@ -11,7 +11,7 @@ Template.registerHelper('handleReady', function (handleName) {
 });
 
 Template.registerHelper('numSongs', function () {
-  return Songs.find().count()
+  return Songs.find().count();
 });
 
 Template.registerHelper('myRoom', function () {

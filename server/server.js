@@ -34,6 +34,6 @@ Accounts.onCreateUser(function (options, user) {
 Meteor.startup(function () {
   Rooms.update({}, {$set: {listeners: []}}, {multi: true});
   ServiceConfiguration.configurations.upsert({service: 'facebook'}, {
-    service: 'facebook', loginStyle: 'redirect', appId: Meteor.settings.fbAppId, secret: Meteor.settings.fbSecret
+    $set: {loginStyle: 'redirect', appId: Meteor.settings.fbAppId, secret: Meteor.settings.fbSecret}
   });
 });
