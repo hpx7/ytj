@@ -15,6 +15,10 @@ Tracker.autorun(function () {
   if (song && yt.ready()) yt.player.loadVideoById(song.yt_id);
 });
 
+Template.video.onCreated(function () {
+  this.subscribe('currentSong', Router.current().params._id);
+});
+
 Template.video.helpers({
   disabled: function () {
     return Songs.find().count() > 1 || Songs.findOne().related ? '' : 'disabled';

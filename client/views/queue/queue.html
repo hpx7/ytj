@@ -2,7 +2,7 @@
   <div class="well">
     <label for="queue">Queue:</label>
     <div id="queue">
-      {{#if handleReady 'queueHandle'}}
+      {{#if Template.subscriptionsReady}}
         {{#each songs}}
           {{> song}}
         {{/each}}

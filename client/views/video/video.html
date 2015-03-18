@@ -1,5 +1,5 @@
 <template name="video">
-  {{#if handleReady 'queueHandle'}}
+  {{#if Template.subscriptionsReady}}
     {{#if numSongs}}
       <div class="video-container">
         {{> YTPlayer}}

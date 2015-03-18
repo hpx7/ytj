@@ -1,7 +1,7 @@
 <template name="related">
   <label for="related-videos">Related Songs:</label>
   <div id="related-videos">
-    {{#if handleReady 'queueHandle'}}
+    {{#if Template.subscriptionsReady}}
       {{#if numSongs}}
         {{#each relatedSongs}}
           {{> song}}

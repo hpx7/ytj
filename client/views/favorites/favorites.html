@@ -1,7 +1,7 @@
 <template name="favorites">
   <label for="favorite-videos">Favorite Videos:</label>
   <div id="favorite-videos">
-    {{#if handleReady 'favoritesHandle'}}
+    {{#if Template.subscriptionsReady}}
       {{#each favoriteVideos}}
         {{> song}}
       {{/each}}

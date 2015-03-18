@@ -6,10 +6,6 @@ Template.registerHelper('atRoute', function (name) {
   return Router.current().route.getName() === name;
 });
 
-Template.registerHelper('handleReady', function (handleName) {
-  return Router.current()[handleName] && Router.current()[handleName].ready();
-});
-
 Template.registerHelper('numSongs', function () {
   return Songs.find().count();
 });

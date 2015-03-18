@@ -17,6 +17,10 @@ Meteor.publish('room', function (roomId) {
   return Rooms.find(roomId);
 });
 
+Meteor.publish('currentSong', function (roomId) {
+  return Songs.find({addedTo: roomId}, {sort: {addedAt: 1, limit: 1}});
+});
+
 Meteor.publish('queue', function (roomId) {
   return Songs.find({addedTo: roomId});
 });
