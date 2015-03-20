@@ -1,42 +1,52 @@
 <template name="room">
-  <div class="col-md-3">
-    <div class="sidebar-nav well">
-      <span><b>Current Room: </b>{{owner.username}}</span>
-      <br>
-      <br>
-      <label for="users-list">Listeners:</label>
-      <ul class="list-unstyled">
-        {{#each listeners}}
-          <li><i>{{user.username}}</i></li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-5 col-sm-6">
-    <div class="visible-xs-block">
-      <button type="button" class="btn btn-primary btn-block vspace" data-toggle="modal" data-target=".modal">Add Songs</button>
-    </div>
-    {{#if inMyRoom}}
-      {{> video}}
-    {{/if}}
-    {{> queue}}
-  </div>
-  <div class="col-md-4 col-sm-6 hidden-xs">
-    {{> sidebar}}
-  </div>
-  <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title">Add Song</h4>
-        </div>
-        <div class="modal-body" style="min-height: 400px; overflow: visible;">
-          {{> sidebar}}
+  {{#if Template.subscriptionsReady}}
+    {{#with currentRoom}}
+      <div class="col-md-3">
+        <div class="sidebar-nav well">
+          <span><b>Current Room: </b>{{owner.username}}</span>
+          <br>
+          <br>
+          <label for="users-list">Listeners:</label>
+          <ul class="list-unstyled">
+            {{#each listeners}}
+              <li><i>{{user.username}}</i></li>
+            {{/each}}
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="col-md-5 col-sm-6">
+        <div class="visible-xs-block">
+          <button type="button" class="btn btn-primary btn-block vspace" data-toggle="modal" data-target=".modal">Add Songs</button>
+        </div>
+        {{#if inMyRoom}}
+          {{> video}}
+        {{/if}}
+        {{> queue}}
+      </div>
+      <div class="col-md-4 col-sm-6 hidden-xs">
+        {{> sidebar}}
+      </div>
+      <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Add Song</h4>
+            </div>
+            <div class="modal-body" style="min-height: 400px; overflow: visible;">
+              {{> sidebar}}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <center>
+        <h1>404 Room Not Found</h1>
+      </center>
+    {{/with}}
+  {{else}}
+    {{> spinner}}
+  {{/if}}
 </template>
