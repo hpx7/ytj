@@ -14,7 +14,9 @@ meteorhacks:fast-render
 ian:accounts-ui-bootstrap-3
 twbs:bootstrap
 mizzao:jquery-ui
+plusmore:reactive-responsive-helpers
 sacha:spin
+msavin:mongol
 meteorhacks:kadira
 okgrow:analytics
 hpx7:youtube-iframe-player
