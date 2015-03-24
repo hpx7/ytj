@@ -1,15 +1,20 @@
-var search = MeteorSearch();
-
 RegisterAsyncHelper({template: Template.search, helperName: 'searchResults'}, function (cb) {
-  if (search.getSearchQuery()) {
-    SearchYT({q: search.getSearchQuery(), maxResults: 16}, YTMapping, function (err, data) {
+  var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
+  if (query) {
+    SearchYT({q: query, maxResults: 16}, YTMapping, function (err, data) {
       cb(data);
     });
   } else
     cb([]);
 });
 
-Template.search.rendered = function () {
+Template.search.helpers({
+  query: function () {
+    return Router.current().params.query.q;
+  }
+});
+
+Template.search.onRendered(function () {
   $('.queryinput').autocomplete({
     source: function (request, response) {
       var url = 'https://suggestqueries.google.com/complete/search?callback=?';
@@ -18,4 +23,14 @@ Template.search.rendered = function () {
       });
     }
   });
-};
+});
+
+Template.search.events({
+  'submit form': function (e) {
+    $('.queryinput').blur();
+    var params = Router.current().params;
+    params.query.q = $(e.target).find('.queryinput').val();
+    Router.go(Router.current().route.getName(), params, {query: params.query, hash: params.hash});
+    return false;
+  }
+});
