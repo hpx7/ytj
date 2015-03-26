@@ -19,7 +19,7 @@ ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
 email@1.0.6
-facebook@1.1.4
+facebook@1.2.0
 fastclick@1.0.3
 force-ssl@1.0.4
 geojson-utils@1.0.3
@@ -62,7 +62,7 @@ mizzao:jquery-ui@1.11.2
 mobile-status-bar@1.0.3
 mongo@1.1.0
 mongo-livedata@1.0.8
-msavin:mongol@1.0.6
+msavin:mongol@1.0.8
 npm-bcrypt@0.7.8_1
 numtel:template-from-string@0.1.0
 oauth@1.1.4

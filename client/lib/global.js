@@ -19,6 +19,6 @@ Template.registerHelper('inMyRoom', function () {
 });
 
 Accounts.ui.config({
-  requestPermissions: {facebook: ['user_friends']},
+  requestPermissions: {facebook: ['public_profile', 'email', 'user_friends']},
   passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });
