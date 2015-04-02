@@ -2,13 +2,10 @@ var yt = new YTPlayer({rel: 0, playsinline: 1});
 
 Tracker.autorun(function () {
   if (yt.ready()) yt.player.addEventListener('onStateChange', function (e) {
-    if (e.data === YT.PlayerState.ENDED) songEnd();
+    if (e.data === YT.PlayerState.ENDED)
+      removeSong(Songs.findOne({}, {sort: {addedAt: 1}})._id);
   });
 });
-
-function songEnd () {
-  Meteor.call('removeSong', Songs.findOne({}, {sort: {addedAt: 1}})._id, Router.current().params._id, handleError);
-}
 
 Tracker.autorun(function () {
   var song = Songs.findOne({}, {sort: {addedAt: 1}, fields: {yt_id: 1}});
@@ -21,10 +18,12 @@ Template.video.onCreated(function () {
 
 Template.video.helpers({
   disabled: function () {
-    return Songs.find().count() > 1 || Songs.findOne().related ? '' : 'disabled';
+    return Songs.find().count() > 1 || Session.get('related') ? '' : 'disabled';
   }
 });
 
 Template.video.events({
-  'click #skipbutton': songEnd
+  'click #skipbutton': function (e) {
+    removeSong(Songs.findOne({}, {sort: {addedAt: 1}})._id);
+  }
 });

@@ -2,6 +2,13 @@ handleError = function (error) {
   if (error) alert('Error: ' + error.message);
 };
 
+removeSong = function (songId) {
+  var related = Session.get('related'), roomId = Router.current().params._id;
+  Meteor.call('removeSong', songId, roomId, handleError);
+  if (related && !Songs.findOne())
+    Meteor.call('addSong', related[Math.random() * related.length | 0], roomId, handleError);
+};
+
 Template.registerHelper('atRoute', function (name) {
   return Router.current().route.getName() === name;
 });

@@ -17,8 +17,9 @@ mizzao:jquery-ui
 plusmore:reactive-responsive-helpers
 sacha:spin
 msavin:mongol
-meteorhacks:kadira
-okgrow:analytics
 hpx7:youtube-iframe-player
 hpx7:async-template-helpers
 hpx7:youtube-search
+meteorhacks:sikka
+meteorhacks:kadira
+okgrow:analytics
