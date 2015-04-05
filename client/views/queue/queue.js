@@ -1,5 +1,6 @@
 Template.queue.onCreated(function () {
   this.subscribe('queue', Router.current().params._id);
+  this.subscribe('favorites');
 });
 
 Template.queue.helpers({
