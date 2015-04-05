@@ -8,12 +8,6 @@ RegisterAsyncHelper({template: Template.search, helperName: 'searchResults'}, fu
     cb([]);
 });
 
-Template.search.helpers({
-  query: function () {
-    return Router.current().params.query.q;
-  }
-});
-
 Template.search.onRendered(function () {
   $('.queryinput').autocomplete({
     source: function (request, response) {
@@ -23,6 +17,12 @@ Template.search.onRendered(function () {
       });
     }
   });
+});
+
+Template.search.helpers({
+  query: function () {
+    return Router.current().params.query.q;
+  }
 });
 
 Template.search.events({
