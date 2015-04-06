@@ -1,11 +1,11 @@
-RegisterAsyncHelper({template: Template.search, helperName: 'searchResults'}, function (cb) {
+Tracker.autorun(function () {
+  Session.set('searchResults', null);
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
   if (query) {
     SearchYT({q: query, maxResults: 16}, YTMapping, function (err, data) {
-      cb(data);
+      Session.set('searchResults', data);
     });
-  } else
-    cb([]);
+  }
 });
 
 Template.search.onRendered(function () {
@@ -22,6 +22,9 @@ Template.search.onRendered(function () {
 Template.search.helpers({
   query: function () {
     return Router.current().params.query.q;
+  },
+  searchResults: function () {
+    return Session.get('searchResults');
   }
 });
 

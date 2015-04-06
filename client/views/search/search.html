@@ -11,8 +11,12 @@
   </form>
   <br>
   <div id="search-results">
-    {{#each searchResults}}
-      {{> song}}
-    {{/each}}
+    {{#if query}}
+      {{#each searchResults}}
+        {{> song}}
+      {{else}}
+        <p>Loading...</p>
+      {{/each}}
+    {{/if}}
   </div>
 </template>
