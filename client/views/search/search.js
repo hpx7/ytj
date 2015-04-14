@@ -1,9 +1,11 @@
 Tracker.autorun(function () {
-  Session.set('searchResults', null);
+  SearchResults.remove({});
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
   if (query) {
     SearchYT({q: query, maxResults: 16}, YTMapping, function (err, data) {
-      Session.set('searchResults', data);
+      _.each(data, function (result) {
+        SearchResults.insert(result);
+      });
     });
   }
 });
@@ -24,7 +26,7 @@ Template.search.helpers({
     return Router.current().params.query.q;
   },
   searchResults: function () {
-    return Session.get('searchResults');
+    return SearchResults.find();
   }
 });
 

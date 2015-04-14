@@ -23,7 +23,7 @@ Template.song.events({
     Meteor.call('addSong', this, Router.current().params._id, handleError);
   },
   'click .close': function (e) {
-    if (Songs.find().count() > 1 || Session.get('related'))
+    if (Songs.find().count() > 1 || Related.findOne())
       removeSong(this._id);
   },
   'click .glyphicon-star-empty': function (e) {

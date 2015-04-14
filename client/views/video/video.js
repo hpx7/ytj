@@ -18,7 +18,7 @@ Template.video.onCreated(function () {
 
 Template.video.helpers({
   disabled: function () {
-    return Songs.find().count() > 1 || Session.get('related') ? '' : 'disabled';
+    return Songs.find().count() > 1 || Related.findOne() ? '' : 'disabled';
   }
 });
 

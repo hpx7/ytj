@@ -3,9 +3,9 @@ handleError = function (error) {
 };
 
 removeSong = function (songId) {
-  var related = Session.get('related'), roomId = Router.current().params._id;
+  var related = Related.find().fetch(), roomId = Router.current().params._id;
   Meteor.call('removeSong', songId, roomId, handleError);
-  if (related && !Songs.findOne())
+  if (related.length && !Songs.findOne())
     Meteor.call('addSong', related[Math.random() * related.length | 0], roomId, handleError);
 };
 
