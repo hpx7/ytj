@@ -1,14 +1,7 @@
-Tracker.autorun(function () {
-  SearchResults.remove({});
+CreateYTSearch(function () {
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
-  if (query) {
-    SearchYT({q: query, maxResults: 16}, YTMapping, function (err, data) {
-      _.each(data, function (result) {
-        SearchResults.insert(result);
-      });
-    });
-  }
-});
+  if (query) return {q: query, maxResults: 16};
+}, SearchResults);
 
 Template.search.onRendered(function () {
   $('.queryinput').autocomplete({
