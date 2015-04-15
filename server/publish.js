@@ -3,7 +3,7 @@ Meteor.publish(null, function () {
 });
 
 Meteor.publish('friendsRooms', function () {
-  return Rooms.find({'owner.services.facebook.id': {$in: friendIds(this.userId)}});
+  return Rooms.find({'owner.services.facebook.id': {$in: FriendIDs(this.userId)}});
 });
 
 Meteor.publish('room', function (roomId) {
