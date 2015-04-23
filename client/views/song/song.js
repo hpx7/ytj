@@ -27,11 +27,11 @@ Template.song.events({
       removeSong(this._id);
   },
   'click .glyphicon-star-empty': function (e) {
-  	Meteor.call('favorite', this, handleError);
-    return false;
+    e.stopPropagation();
+    Meteor.call('favorite', this, handleError);
   },
   'click .glyphicon-star': function (e) {
+    e.stopPropagation();
     Meteor.call('unfavorite', this.yt_id, handleError);
-    return false;
   }
 });

@@ -25,10 +25,10 @@ Template.search.helpers({
 
 Template.search.events({
   'submit form': function (e) {
+    e.preventDefault();
     $('.queryinput').blur();
     var params = Router.current().params;
     params.query.q = $(e.target).find('.queryinput').val();
     Router.go(Router.current().route.getName(), params, {query: params.query, hash: params.hash});
-    return false;
   }
 });
