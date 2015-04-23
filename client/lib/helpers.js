@@ -9,6 +9,17 @@ removeSong = function (songId) {
     Meteor.call('addSong', related[Math.random() * related.length | 0], roomId, handleError);
 };
 
+createYTSearch = function (getYTParams, collection) {
+  Tracker.autorun(function () {
+    collection.remove({});
+    SearchYT(getYTParams(), YTMapping, function (err, data) {
+      _.each(data, function (result) {
+        collection.insert(result);
+      });
+    });
+  });
+};
+
 Template.registerHelper('atRoute', function (name) {
   return Router.current().route.getName() === name;
 });
@@ -23,9 +34,4 @@ Template.registerHelper('myRoom', function () {
 
 Template.registerHelper('inMyRoom', function () {
   return Rooms.findOne({_id: Router.current().params._id, 'owner._id': Meteor.userId()});
-});
-
-Accounts.ui.config({
-  requestPermissions: {facebook: ['public_profile', 'email', 'user_friends']},
-  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });

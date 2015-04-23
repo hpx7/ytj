@@ -1,4 +1,4 @@
-CreateYTSearch(function () {
+createYTSearch(function () {
   var query = Router.current() && Router.current().params.query && Router.current().params.query.q;
   if (query) return {q: query, maxResults: 16};
 }, SearchResults);
