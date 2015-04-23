@@ -3,6 +3,10 @@ createYTSearch(function () {
   if (query) return {q: query, maxResults: 16};
 }, SearchResults);
 
+Template.search.onCreated(function () {
+  this.subscribe('favorites');
+});
+
 Template.search.onRendered(function () {
   $('.queryinput').autocomplete({
     source: function (request, response) {

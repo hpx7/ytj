@@ -5,6 +5,7 @@ createYTSearch(function () {
 
 Template.related.onCreated(function () {
   this.subscribe('currentSong', Router.current().params._id);
+  this.subscribe('favorites');
 });
 
 Template.related.helpers({
