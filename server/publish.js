@@ -1,5 +1,5 @@
 Meteor.publish(null, function () {
-  return [Meteor.users.find(this.userId), Rooms.find({'owner._id': this.userId})];
+  return [Rooms.find({'owner._id': this.userId})];
 });
 
 Meteor.publish('friendsRooms', function () {
