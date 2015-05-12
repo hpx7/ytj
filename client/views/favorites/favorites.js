@@ -4,6 +4,6 @@ Template.favorites.onCreated(function () {
 
 Template.favorites.helpers({
   favoriteVideos: function () {
-    return Favorites.find();
+    return Favorites.find({}, {sort: {addedAt: -1}});
   }
 });

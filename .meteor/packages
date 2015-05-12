@@ -16,6 +16,7 @@ twbs:bootstrap
 mizzao:jquery-ui
 plusmore:reactive-responsive-helpers
 sacha:spin
+255kb:meteor-status
 msavin:mongol
 hpx7:fb-friends
 hpx7:youtube-iframe-player
