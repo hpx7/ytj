@@ -4,7 +4,7 @@ createYTSearch(function () {
 }, Related);
 
 Template.related.onCreated(function () {
-  this.subscribe('currentSong', Router.current().params._id);
+  this.subscribe('currentSong', FlowRouter.getParam('roomId'));
   this.subscribe('favorites');
 });
 

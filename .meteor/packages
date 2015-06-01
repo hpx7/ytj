@@ -9,8 +9,9 @@ accounts-facebook
 accounts-password
 service-configuration
 http
-iron:router
 meteorhacks:fast-render
+meteorhacks:flow-router
+arillo:flow-router-helpers
 ian:accounts-ui-bootstrap-3
 twbs:bootstrap
 mizzao:jquery-ui

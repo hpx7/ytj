@@ -1,5 +1,5 @@
 Template.queue.onCreated(function () {
-  this.subscribe('queue', Router.current().params._id);
+  this.subscribe('queue', FlowRouter.getParam('roomId'));
   this.subscribe('favorites');
 });
 

@@ -13,7 +13,7 @@ Tracker.autorun(function () {
 });
 
 Template.video.onCreated(function () {
-  this.subscribe('currentSong', Router.current().params._id);
+  this.subscribe('currentSong', FlowRouter.getParam('roomId'));
 });
 
 Template.video.helpers({

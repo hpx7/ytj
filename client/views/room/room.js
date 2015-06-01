@@ -1,9 +1,9 @@
 Template.room.onCreated(function () {
-  this.subscribe('room', Router.current().params._id);
+  this.subscribe('room', FlowRouter.getParam('roomId'));
 });
 
 Template.room.helpers({
   currentRoom: function () {
-    return Rooms.findOne(Router.current().params._id);
+    return Rooms.findOne(FlowRouter.getParam('roomId'));
   }
 });

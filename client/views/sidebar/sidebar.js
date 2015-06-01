@@ -5,9 +5,15 @@ Template.sidebar.helpers({
     return tabs;
   },
   currentTab: function () {
-    return (Router.current().getParams().hash || tabs[0]).toLowerCase();
+    return (FlowRouter.getQueryParam('tab') || tabs[0]).toLowerCase();
   },
   isSelected: function (tab) {
-    return tab === (Router.current().getParams().hash || tabs[0]);
+    return tab === (FlowRouter.getQueryParam('tab') || tabs[0]);
+  }
+});
+
+Template.sidebar.events({
+  'click li': function (e) {
+    FlowRouter.setQueryParams({tab: String(this)});
   }
 });

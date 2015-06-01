@@ -3,7 +3,7 @@ handleError = function (error) {
 };
 
 removeSong = function (songId) {
-  var related = Related.find().fetch(), roomId = Router.current().params._id;
+  var related = Related.find().fetch(), roomId = FlowRouter.getParam('roomId');
   Meteor.call('removeSong', songId, roomId, handleError);
   if (related.length && !Songs.findOne())
     Meteor.call('addSong', related[Math.random() * related.length | 0], roomId, handleError);
@@ -20,8 +20,8 @@ createYTSearch = function (getYTParams, collection) {
   });
 };
 
-Template.registerHelper('atRoute', function (name) {
-  return Router.current().route.getName() === name;
+Template.registerHelper('routeName', function () {
+  return FlowRouter.getRouteName();
 });
 
 Template.registerHelper('numSongs', function () {
@@ -33,5 +33,5 @@ Template.registerHelper('myRoom', function () {
 });
 
 Template.registerHelper('inMyRoom', function () {
-  return Rooms.findOne({_id: Router.current().params._id, 'owner._id': Meteor.userId()});
+  return Rooms.findOne({_id: FlowRouter.getParam('roomId'), 'owner._id': Meteor.userId()});
 });

@@ -1,7 +1,7 @@
 <template name="sidebar">
   <ul class="nav nav-tabs">
     {{#each tabs}}
-      <li class="{{#if isSelected this}}active{{/if}}"><a href="#{{this}}">{{this}}</a></li>
+      <li class="{{#if isSelected this}}active{{/if}}"><a class="pointer">{{this}}</a></li>
     {{/each}}
   </ul>
   <br>

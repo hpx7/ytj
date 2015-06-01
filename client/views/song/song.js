@@ -1,6 +1,6 @@
 Template.song.helpers({
   removable: function () {
-    var room = Rooms.findOne(Router.current().params._id);
+    var room = Rooms.findOne(FlowRouter.getParam('roomId'));
     return room && this.adder && _.contains([room.owner._id, this.adder._id], Meteor.userId());
   },
   favorited: function () {
@@ -20,7 +20,7 @@ Template.song.helpers({
 Template.song.events({
   'click .song.pointer': function (e) {
     $(e.target).closest('.song').fadeOut(100).fadeIn(100);
-    Meteor.call('addSong', this, Router.current().params._id, handleError);
+    Meteor.call('addSong', this, FlowRouter.getParam('roomId'), handleError);
   },
   'click .close': function (e) {
     if (Songs.find().count() > 1 || Related.findOne())

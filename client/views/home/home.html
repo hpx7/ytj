@@ -5,7 +5,7 @@
         <h1>Welcome to YouTube Jukebox!</h1>
         {{#if currentUser}}
           <p>Join a room to continue. You will only recieve audio in your
-            <a href="{{pathFor route='room' data=myRoom}}">own room.</a>
+            <a href="/rooms/{{myRoom._id}}">own room.</a>
           </p>
         {{else}}
           <p>Please sign in to continue.</p>
@@ -19,7 +19,7 @@
         <label for="my-room">Your Room:</label>
         <div id="my-room">
           {{#with myRoom}}
-            <a href="{{pathFor route='room'}}" class="list-group-item">
+            <a href="/rooms/{{myRoom._id}}" class="list-group-item">
               {{owner.username}}
               <span class="badge">{{listeners.length}}</span>
             </a>
@@ -31,7 +31,7 @@
           {{#if currentUser.services.facebook}}
             {{#if Template.subscriptionsReady}}
               {{#each friendsRooms}}
-                <a href="{{pathFor route='room'}}" class="list-group-item">
+                <a href="/rooms/{{this._id}}" class="list-group-item">
                   {{owner.username}}
                   <span class="badge">{{listeners.length}}</span>
                 </a>
