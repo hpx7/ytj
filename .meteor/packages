@@ -11,7 +11,7 @@ service-configuration
 http
 meteorhacks:fast-render
 meteorhacks:flow-router
-arillo:flow-router-helpers
+zimme:active-route
 ian:accounts-ui-bootstrap-3
 twbs:bootstrap
 mizzao:jquery-ui

@@ -1,67 +1,71 @@
 <template name="room">
-  {{#if currentUser}}
-    {{#if Template.subscriptionsReady}}
-      {{#with currentRoom}}
-        <div class="col-md-3">
-          <div class="sidebar-nav well">
-            <span><b>Current Room: </b>{{owner.username}}</span>
-            <br>
-            <br>
-            <label for="users-list">Listeners:</label>
-            <ul class="list-unstyled">
-              {{#each listeners}}
-                <li><i>{{user.username}}</i></li>
-              {{/each}}
-            </ul>
+  {{#if loggingIn}}
+    {{> spinner}}
+  {{else}}
+    {{#if currentUser}}
+      {{#if Template.subscriptionsReady}}
+        {{#with currentRoom}}
+          <div class="col-md-3">
+            <div class="sidebar-nav well">
+              <span><b>Current Room: </b>{{owner.username}}</span>
+              <br>
+              <br>
+              <label for="users-list">Listeners:</label>
+              <ul class="list-unstyled">
+                {{#each listeners}}
+                  <li><i>{{user.username}}</i></li>
+                {{/each}}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="col-md-5 col-sm-6">
+          <div class="col-md-5 col-sm-6">
+            {{#visibleXs}}
+              <button type="button" class="btn btn-primary btn-block vspace" data-toggle="modal" data-target=".modal">Add Songs</button>
+            {{/visibleXs}}
+            {{#if inMyRoom}}
+              {{> video}}
+            {{/if}}
+            {{> queue}}
+          </div>
+          {{#hiddenXs}}
+            <div class="col-md-4 col-sm-6">
+              {{> sidebar}}
+            </div>
+          {{/hiddenXs}}
           {{#visibleXs}}
-            <button type="button" class="btn btn-primary btn-block vspace" data-toggle="modal" data-target=".modal">Add Songs</button>
-          {{/visibleXs}}
-          {{#if inMyRoom}}
-            {{> video}}
-          {{/if}}
-          {{> queue}}
-        </div>
-        {{#hiddenXs}}
-          <div class="col-md-4 col-sm-6">
-            {{> sidebar}}
-          </div>
-        {{/hiddenXs}}
-        {{#visibleXs}}
-          <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title">Add Song</h4>
-                </div>
-                <div class="modal-body" style="min-height: 400px; overflow: visible;">
-                  {{> sidebar}}
+            <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Add Song</h4>
+                  </div>
+                  <div class="modal-body" style="min-height: 400px; overflow: visible;">
+                    {{> sidebar}}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        {{/visibleXs}}
+          {{/visibleXs}}
+        {{else}}
+          <center>
+            <h1>404 Room Not Found</h1>
+          </center>
+        {{/with}}
       {{else}}
-        <center>
-          <h1>404 Room Not Found</h1>
-        </center>
-      {{/with}}
+        {{> spinner}}
+      {{/if}}
     {{else}}
-      {{> spinner}}
-    {{/if}}
-  {{else}}
-    <div class="col-md-12">
-      <div class="jumbotron">
-        <center>
-          <h1>Welcome to YouTube Jukebox!</h1>
-          <p>Please sign in to continue.</p>
-        </center>
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <center>
+            <h1>Welcome to YouTube Jukebox!</h1>
+            <p>Please sign in to continue.</p>
+          </center>
+        </div>
       </div>
-    </div>
+    {{/if}}
   {{/if}}
 </template>
