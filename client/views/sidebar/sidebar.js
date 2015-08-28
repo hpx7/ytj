@@ -13,7 +13,7 @@ Template.sidebar.helpers({
 });
 
 Template.sidebar.events({
-  'click li': function (e) {
+  'click a.pointer': function (e) {
     FlowRouter.setQueryParams({tab: String(this)});
   }
 });

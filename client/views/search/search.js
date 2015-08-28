@@ -19,9 +19,6 @@ Template.search.onRendered(function () {
 });
 
 Template.search.helpers({
-  query: function () {
-    return FlowRouter.getQueryParam('q');
-  },
   searchResults: function () {
     return SearchResults.find();
   }

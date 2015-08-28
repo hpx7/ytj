@@ -1,7 +1,7 @@
 <template name="search">
   <form role="form">
     <div class="input-group ui-front">
-      <input class="queryinput form-control" placeholder="Search YouTube" value="{{query}}" autocomplete="off">
+      <input class="queryinput form-control" placeholder="Search YouTube" value="{{queryParam 'q'}}" autocomplete="off">
       <span class="input-group-btn">
         <button id="searchbutton" class="btn btn-primary">
           <span class="glyphicon glyphicon-search"></span> Search
@@ -11,7 +11,7 @@
   </form>
   <br>
   <div id="search-results">
-    {{#if query}}
+    {{#if queryParam 'q'}}
       {{#each searchResults}}
         {{> song}}
       {{else}}
