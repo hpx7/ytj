@@ -7,6 +7,7 @@ Meteor.publish('friendsRooms', function () {
 });
 
 Meteor.publish('room', function (roomId) {
+  check(roomId, String);
   if (this.userId) {
     var id = this.connection.id, user = Meteor.users.findOne(this.userId);
     Rooms.update(roomId, {$addToSet: {listeners: {_id: id, user: user}}});
@@ -18,10 +19,12 @@ Meteor.publish('room', function (roomId) {
 });
 
 Meteor.publish('currentSong', function (roomId) {
+  check(roomId, String);
   return Songs.find({addedTo: roomId}, {sort: {addedAt: 1, limit: 1}});
 });
 
 Meteor.publish('queue', function (roomId) {
+  check(roomId, String);
   return Songs.find({addedTo: roomId});
 });
 
