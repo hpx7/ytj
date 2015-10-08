@@ -14,6 +14,9 @@ Template.search.onRendered(function () {
       $.getJSON(url, {client: 'youtube', ds: 'yt', q: request.term}, function (data) {
         response(_.map(data[1], _.first));
       });
+    },
+    select: function (e, ui) {
+      FlowRouter.setQueryParams({q: ui.item.value});
     }
   });
 });
