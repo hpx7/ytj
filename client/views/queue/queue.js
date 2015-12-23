@@ -4,7 +4,7 @@ Template.queue.onCreated(function () {
 });
 
 Template.queue.helpers({
-  songs: function () {
+  songs() {
     return Songs.find({}, {sort: {addedAt: 1}});
   }
 });

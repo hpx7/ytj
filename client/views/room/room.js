@@ -3,7 +3,7 @@ Template.room.onCreated(function () {
 });
 
 Template.room.helpers({
-  currentRoom: function () {
+  currentRoom() {
     return Rooms.findOne(FlowRouter.getParam('roomId'));
   }
 });

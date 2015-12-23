@@ -9,7 +9,7 @@ Meteor.publish('friendsRooms', function () {
 Meteor.publish('room', function (roomId) {
   check(roomId, String);
   if (this.userId) {
-    var id = this.connection.id, user = Meteor.users.findOne(this.userId);
+    const id = this.connection.id, user = Meteor.users.findOne(this.userId);
     Rooms.update(roomId, {$addToSet: {listeners: {_id: id, user: user}}});
     this.onStop(function () {
       Rooms.update(roomId, {$pull: {listeners: {_id: id}}});

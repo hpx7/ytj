@@ -1,15 +1,15 @@
-handleError = function (error) {
-  if (error) alert('Error: ' + error.message);
+handleError = (error) => {
+  if (error) alert('Error: ' + JSON.stringify(error));
 };
 
-removeSong = function (songId) {
-  var related = Related.find().fetch(), roomId = FlowRouter.getParam('roomId');
+removeSong = (songId) => {
+  const related = Related.find().fetch(), roomId = FlowRouter.getParam('roomId');
   Meteor.call('removeSong', songId, roomId, handleError);
   if (related.length && !Songs.findOne())
     Meteor.call('addSong', related[Math.random() * related.length | 0], roomId, handleError);
 };
 
-createYTSearch = function (getYTParams, collection) {
+createYTSearch = (getYTParams, collection) => {
   Tracker.autorun(function () {
     collection.remove({});
     SearchYT(getYTParams(), YTMapping, function (err, data) {

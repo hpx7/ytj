@@ -16,6 +16,7 @@ reload
 random
 ejson
 spacebars
+ecmascript
 check
 force-ssl
 accounts-facebook

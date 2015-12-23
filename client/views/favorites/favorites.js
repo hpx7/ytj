@@ -3,7 +3,7 @@ Template.favorites.onCreated(function () {
 });
 
 Template.favorites.helpers({
-  favoriteVideos: function () {
+  favoriteVideos() {
     return Favorites.find({}, {sort: {addedAt: -1}});
   }
 });

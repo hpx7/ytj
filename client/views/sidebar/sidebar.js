@@ -1,19 +1,19 @@
-var tabs = ['Related', 'Search', 'Favorites'];
+const tabs = ['Related', 'Search', 'Favorites'];
 
 Template.sidebar.helpers({
-  tabs: function () {
+  tabs() {
     return tabs;
   },
-  currentTab: function () {
+  currentTab() {
     return (FlowRouter.getQueryParam('tab') || tabs[0]).toLowerCase();
   },
-  isSelected: function (tab) {
+  isSelected(tab) {
     return tab === (FlowRouter.getQueryParam('tab') || tabs[0]);
   }
 });
 
 Template.sidebar.events({
-  'click a.pointer': function (e) {
+  'click a.pointer'(e) {
     FlowRouter.setQueryParams({tab: String(this)});
   }
 });

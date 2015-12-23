@@ -3,7 +3,7 @@ Template.home.onCreated(function () {
 });
 
 Template.home.helpers({
-  friendsRooms: function () {
+  friendsRooms() {
     return Rooms.find({'owner._id': {$ne: Meteor.userId()}}, {sort: {'owner.username': 1}});
   }
 });
