@@ -3,26 +3,25 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-minifiers
-meteor-base
-mobile-experience
-mongo
-blaze-html-templates
-session
-jquery
-tracker
-logging
-reload
-random
-ejson
-spacebars
-ecmascript
-check
-force-ssl
-accounts-facebook
-accounts-password
-service-configuration
-http
+meteor-base@1.0.4
+mobile-experience@1.0.4
+mongo@1.1.12
+blaze-html-templates@1.0.4
+session@1.1.6
+jquery@1.11.9
+tracker@1.1.0
+logging@1.1.15
+reload@1.1.10
+random@1.0.10
+ejson@1.0.12
+spacebars@1.0.12
+ecmascript@0.5.8
+check@1.2.3
+force-ssl@1.0.12
+accounts-facebook@1.0.10
+accounts-password@1.3.0
+service-configuration@1.0.10
+http@1.2.9
 hpx7:fb-friends
 hpx7:youtube-iframe-player
 hpx7:youtube-search
@@ -41,3 +40,6 @@ mizzao:jquery-ui
 plusmore:reactive-responsive-helpers
 sacha:spin
 255kb:meteor-status
+standard-minifier-css
+standard-minifier-js
+shell-server
